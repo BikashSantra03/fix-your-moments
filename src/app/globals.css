@@ -1,0 +1,98 @@
+@import "tailwindcss";
+
+/*
+  Design tokens — Fix Your Moments
+  Two provisional themes per Design.md, switched via [data-theme] on <html>.
+  Default: Option A "Cinematic Black & Champagne" (lead candidate).
+  Alternate: Option C "Editorial White & Charcoal" (fallback candidate).
+  Neither is client-approved yet — keep all color usage behind these tokens.
+*/
+
+:root {
+  --color-bg: #111114;
+  --color-surface: #222126;
+  --color-accent: #d8b878;
+  --color-accent-contrast: #1a1a1d;
+  --color-ivory: #f6f1e9;
+  --color-muted: #a6a2a0;
+  --color-ink: #242125;
+  --color-border-dark: #403c40;
+  --color-border-light: #ded7cd;
+  --color-white: #ffffff;
+  --color-error: #ff8a8a;
+
+  --page-max: 1240px;
+  --page-gutter: clamp(16px, 5vw, 72px);
+  --radius-card: 6px;
+
+  --font-display: var(--font-bodoni-moda), Georgia, serif;
+  --font-body: var(--font-outfit), system-ui, sans-serif;
+}
+
+[data-theme="editorial"] {
+  --color-bg: #fafaf8;
+  --color-surface: #ebe9e5;
+  --color-accent: #b18b5f;
+  --color-accent-contrast: #fafaf8;
+  --color-ivory: #fafaf8;
+  --color-muted: #777571;
+  --color-ink: #222222;
+  --color-border-dark: #d8d4cc;
+  --color-border-light: #d8d4cc;
+  --color-white: #ffffff;
+  --color-error: #c0392b;
+}
+
+@theme inline {
+  --color-bg: var(--color-bg);
+  --color-surface: var(--color-surface);
+  --color-accent: var(--color-accent);
+  --color-accent-contrast: var(--color-accent-contrast);
+  --color-ivory: var(--color-ivory);
+  --color-muted: var(--color-muted);
+  --color-ink: var(--color-ink);
+  --color-border-dark: var(--color-border-dark);
+  --color-border-light: var(--color-border-light);
+  --color-white: var(--color-white);
+  --color-error: var(--color-error);
+  --font-display: var(--font-display);
+  --font-body: var(--font-body);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--color-bg);
+  color: var(--color-ivory);
+  font-family: var(--font-body);
+  font-weight: 300;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 3px;
+}
+
+h1,
+h2,
+h3 {
+  font-family: var(--font-display);
+  font-weight: 400;
+  line-height: 1.1;
+  letter-spacing: -0.01em;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
