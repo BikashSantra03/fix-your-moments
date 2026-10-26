@@ -1,9 +1,9 @@
-/**
- * Central media configuration for assets not tied to a specific
- * service/portfolio entry (hero, founder portrait, hero video).
- * Swap these paths when real assets arrive — no component changes needed.
- */
 export const media = {
+  logo: {
+    src: "/images/logo.jpg",
+    width: 160,
+    height: 160,
+  },
   hero: {
     image: "/images/hero/hero-placeholder.jpg",
     video: null as string | null,

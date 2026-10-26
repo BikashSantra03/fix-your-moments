@@ -1,10 +1,6 @@
 import type { SiteSettings } from "@/types/content";
 
-/**
- * Central site configuration. Contact fields are null until the client
- * provides and verifies real values — never fall back to the HTML demo's
- * placeholder phone/email/address (see Rules.md §7).
- */
+// Contact fields stay null until the client provides real values — never fall back to placeholder contact info (Rules.md §7).
 export const siteSettings: SiteSettings = {
   brandName: "Fix Your Moments",
   founderName: "Koushik Pramanik",

@@ -1,10 +1,6 @@
 import type { Service } from "@/types/content";
 
-/**
- * Starter service data adapted from fix-your-moments.html.
- * Copy/claims pending client review (see PRD.md §1); image paths are
- * placeholders to be replaced once real assets are delivered.
- */
+// Copy/claims pending client review (PRD.md §1); image paths are placeholders.
 export const services: Service[] = [
   {
     id: "wedding",
@@ -97,7 +93,3 @@ export const services: Service[] = [
     order: 6,
   },
 ];
-
-export function getServiceById(id: string): Service | undefined {
-  return services.find((service) => service.id === id);
-}

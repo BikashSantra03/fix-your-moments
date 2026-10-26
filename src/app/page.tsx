@@ -11,11 +11,11 @@ export default function Home() {
           <SectionTitle
             eyebrow={siteSettings.founderName}
             title={siteSettings.tagline}
-            description="Phase 1 scaffold: design tokens, typography and base components are wired up. Homepage content lands in Phase 3."
+            description="Phase 2 scaffold: global navigation, footer and routing are wired up. Full homepage content lands in Phase 3."
           />
           <div className="flex flex-wrap gap-4 mt-10">
-            <Button href="#">Book your date</Button>
-            <Button href="#" variant="secondary">
+            <Button href="/contact">Book your date</Button>
+            <Button href="/portfolio" variant="secondary">
               See our work
             </Button>
           </div>

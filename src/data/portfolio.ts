@@ -1,10 +1,6 @@
 import type { PortfolioItem } from "@/types/content";
 
-/**
- * Starter portfolio data adapted from fix-your-moments.html.
- * All src paths are local placeholders pending real client assets
- * (see PRD.md §9). Extend this list in Phase 4 without touching gallery UI.
- */
+// All src paths are local placeholders pending real client assets (PRD.md §9).
 export const portfolioItems: PortfolioItem[] = [
   {
     id: "wedding-pheras",
@@ -64,8 +60,3 @@ export const portfolioItems: PortfolioItem[] = [
     order: 6,
   },
 ];
-
-export function getPortfolioByCategory(category: string): PortfolioItem[] {
-  if (category === "all") return portfolioItems;
-  return portfolioItems.filter((item) => item.category === category);
-}
