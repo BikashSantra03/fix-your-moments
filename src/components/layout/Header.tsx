@@ -7,8 +7,12 @@ import { ThemeToggle } from "@/components/theme/ThemeToggle";
 
 export function Header() {
   return (
-    <header className="fixed inset-x-0 top-0 z-50 bg-(--color-bg)/90 backdrop-blur-sm border-b border-(--color-border-dark)">
-      <Container>
+    <header className="fixed inset-x-0 top-0 z-50">
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute inset-0 bg-(--color-bg)/90 backdrop-blur-sm border-b border-(--color-border-dark)"
+      />
+      <Container className="relative">
         <div className="flex items-center justify-between h-[78px]">
           <Logo />
 

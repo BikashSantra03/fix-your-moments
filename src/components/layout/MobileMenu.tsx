@@ -40,7 +40,7 @@ export function MobileMenu() {
         aria-controls={menuId}
         aria-label={open ? "Close menu" : "Open menu"}
         onClick={() => setOpen((v) => !v)}
-        className="relative h-11 w-11 flex items-center justify-center"
+        className="relative h-11 w-11 cursor-pointer flex items-center justify-center"
       >
         <span className="sr-only">{open ? "Close menu" : "Open menu"}</span>
         <span
@@ -64,7 +64,7 @@ export function MobileMenu() {
         id={menuId}
         aria-label="Mobile"
         aria-hidden={!open}
-        className={`fixed inset-x-0 top-[78px] bottom-0 bg-(--color-bg) border-t border-(--color-border-dark) overflow-y-auto transition-transform duration-300 ${
+        className={`fixed inset-x-0 top-[78px] bottom-0 z-50 bg-(--color-bg) border-t border-(--color-border-dark) overflow-y-auto transition-transform duration-300 ${
           open ? "translate-y-0" : "-translate-y-[120%]"
         }`}
       >
