@@ -31,7 +31,7 @@ export interface EnquiryInput {
   name: string;
   mobile: string;
   location: string;
-  purpose: string;
+  purposes: string[];
   date?: string;
   message?: string;
 }
@@ -51,6 +51,7 @@ export interface SiteSettings {
   email: string | null;
   address: string | null;
   mapQuery: string | null;
+  mapEmbedUrl: string | null;
   social: SocialLinks;
   siteUrl: string | null;
 }

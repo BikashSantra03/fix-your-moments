@@ -95,6 +95,8 @@ fix-your-moments/
 │   │   ├── services.ts
 │   │   └── portfolio.ts
 │   ├── lib/
+│   │   ├── contact.ts             # tel/directions/WhatsApp-chat links, configured social links
+│   │   ├── enquiry.ts             # submitEnquiry() — Google Sheet call (stub until endpoint exists)
 │   │   ├── whatsapp.ts            # pure message and URL construction
 │   │   └── validation.ts          # form schema
 │   └── types/
@@ -167,7 +169,7 @@ export interface EnquiryInput {
 
 ## 7. Navigation and animation design
 
-- Use semantic `<Link href="/portfolio">`, not demo-style `#portfolio` hash-based pseudo-pages.
+- Use semantic `<Link href="/portfolio">`, not `#portfolio` hash-based pseudo-pages.
 - Anchors within a page may use `#wedding` but must work on direct link and refresh.
 - Preferred base: lightweight scroll reveals/hover states; camera shutter between routes is a **progressive enhancement**.
 - If implementing shutter transition, it must not corrupt browser history, slow navigation excessively, create hydration mismatch or trap focus; respect `prefers-reduced-motion`.
@@ -188,14 +190,11 @@ export interface EnquiryInput {
 User completes form
     -> validate required fields + mobile number
     -> if invalid: inline field error, no redirect
-    -> if number missing in config: show honest alternative contact info
-    -> if valid: prepare multiline enquiry text
-    -> user clicks send/open WhatsApp
-    -> browser opens wa.me compose URL
-    -> website says "WhatsApp opened; please press Send"
+    -> if valid: submitEnquiry() posts to the Google Sheet endpoint (stub until provided)
+    -> on success: "Thank you, we will get back to you shortly"
 ```
 
-No information is actually delivered to the photographer unless the user sends it from WhatsApp. Don't add an unnecessary Next.js API route.
+Until the Google Sheet endpoint is wired up, `submitEnquiry()` stores nothing. WhatsApp remains a direct chat link in contact details and the floating button, not a form handoff.
 
 ## 10. SEO / deployment decisions
 

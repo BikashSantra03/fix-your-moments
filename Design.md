@@ -1,6 +1,6 @@
 # Design System — Fix Your Moments
 
-**Status:** Provisional visual proposal, NOT yet client approved. The client expressly rejected the green-heavy look of the supplied demo.
+**Status:** Provisional visual proposal, NOT yet client approved. The client expressly rejected a green-heavy look.
 
 ## 1. Creative direction
 
@@ -117,16 +117,16 @@ Use `next/font/google` for local optimization/fewer layout shifts. Set practical
 
 - Full-screen-feeling editorial area: ~85–100svh subject to content/mobile comfort.
 - One highly emotive photography image with **safe text area** and a readable overlay.
-- Headline inspired by HTML reference: “Some moments happen once. We fix them forever.” Copy pending final approval.
+- Headline: “Some moments happen once. We fix them forever.” Copy pending final approval.
 - Two CTAs: Book Your Date / See Our Work.
-- Optional small camera/viewfinder framing from supplied demo, but subtle and removable.
+- Optional small camera/viewfinder framing, subtle and removable.
 - Until final hero video arrives, implement a performant still-image hero with poster readiness; do not depend on stock autoplay video.
 
 ## 8. Animation guidelines
 
 - Prioritize purposeful motion: 200–400ms hover/focus, 400–700ms reveal; no major layout moves.
 - Slideshow cross-fades only if enough suitable images; no rapid/flashing transitions.
-- Shutter transition from demo is a signature option, **not a blocker**; add after navigation is stable and make it bypassable for reduced-motion preference.
+- An aperture-shutter page transition is a signature option, **not a blocker**; add after navigation is stable and make it bypassable for reduced-motion preference.
 - Use transforms/opacity rather than layout-affecting animation for better performance.
 - Implement `prefers-reduced-motion: reduce` behavior with minimal or no decorative motion.
 

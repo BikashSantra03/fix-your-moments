@@ -6,7 +6,7 @@
 
 | Phase | Goal | Dependency | Status |
 |---|---|---|---|
-| 0 | Project audit and requirement mapping | HTML demo + docs | Not started |
+| 0 | Project audit and requirement mapping | Project docs | Not started |
 | 1 | Next.js setup and visual tokens | None | Not started |
 | 2 | Shared shell and navigation | Phase 1 | Not started |
 | 3 | Homepage with placeholders | Phase 2 | Not started |
@@ -23,7 +23,7 @@
 
 **Tasks**
 - Read `PRD.md`, `Architecture.md`, `Rules.md`, `Design.md` and this file.
-- Examine the supplied `fix-your-moments.html`: five pages, six service categories, sample content, slideshow/video fallback, photo filters/lightbox, shutter navigation and WhatsApp form.
+- Confirm scope: five pages, six service categories, sample content, slideshow/video fallback, photo filters/lightbox, shutter navigation and WhatsApp form.
 - Record what to preserve, adapt or omit; confirm unresolved inputs without blocking foundation work.
 - Audit current repo before creating or overwriting anything.
 
@@ -83,7 +83,7 @@
 **Tasks**
 - Responsive form, required field labels, validation and errors.
 - Build proper WhatsApp message from submitted data and encode safe URL.
-- If business WhatsApp is not configured, show clear disabled/not-yet-available state; do not use demo fake number.
+- If business WhatsApp is not configured, show clear disabled/not-yet-available state; do not use a fake number.
 - Render contact links and map only with verified configuration.
 - Explain WhatsApp handoff accurately.
 

@@ -1,17 +1,11 @@
-import { siteSettings } from "@/config/site";
-import { buildWhatsAppLink } from "@/lib/whatsapp";
+import { whatsappChatLink } from "@/lib/contact";
 
 export function WhatsAppFloat() {
-  const link = buildWhatsAppLink(
-    siteSettings.whatsappNumber,
-    `Hi ${siteSettings.brandName}, I'd like to enquire about a shoot.`
-  );
-
-  if (!link) return null;
+  if (!whatsappChatLink) return null;
 
   return (
     <a
-      href={link}
+      href={whatsappChatLink}
       target="_blank"
       rel="noopener noreferrer"
       aria-label="Chat on WhatsApp"

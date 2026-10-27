@@ -6,7 +6,7 @@
 
 1. Deliver a responsive, accessible, premium photography website that matches approved client requirements.
 2. Work **one phase at a time** from `phases.md`; finish a phase's acceptance checks before moving on.
-3. Implement working UI over speculative infrastructure. Preserve the HTML demo's valuable behavior, **not its green-heavy palette or hash router**.
+3. Implement working UI over speculative infrastructure. Use real routes (no hash router) and avoid a green-heavy palette.
 4. Prefer small, reviewable changes and simple components. Do not rewrite unrelated working code.
 5. If a requirement is undecided, use the documented provisional default and label it; avoid inventing confirmed client decisions.
 6. Keep a short progress summary after each phase: files changed, functionality completed, checks run, unresolved inputs.
@@ -39,11 +39,11 @@
 - Use stable keys for mapped items; derive UI from typed data, not copied literals.
 - Avoid heavy client bundles; restrict `"use client"` to interactive leaves.
 - Maintain semantic headings, links, forms, buttons and appropriate alt text.
-- Avoid generic filler lorem ipsum in final UI; demo copy must be reviewed before launch.
+- Avoid generic filler lorem ipsum in final UI; placeholder copy must be reviewed before launch.
 
 ## 5. Design and styling guardrails
 
-- The HTML's `#0E2B2F` midnight-teal/green palette is **rejected** for the redesign. Do not reintroduce it as dominant surface, background or overlay.
+- A midnight-teal/green palette (e.g. `#0E2B2F`) is **rejected**. Do not reintroduce it as dominant surface, background or overlay.
 - **Provisional** palette: cinematic charcoal/black + champagne accents and ivory text, defined in `Design.md`.
 - Use semantic tokens (`--background`, `--surface`, `--accent`, `--text`, `--muted`, etc.). Avoid scattering hex values throughout components.
 - Photography is the hero: avoid oversized decorative animations, busy backgrounds and excessive gradient effects.
@@ -62,10 +62,10 @@
 
 ## 7. Contact and privacy
 
-- Never hardcode demo placeholder phone (`+91 00000 00000`), bogus email, studio address or random map query into deployed contact links.
-- If WhatsApp number isn't configured, hide/disable submission and explain that contact details are being finalized rather than opening a wrong number.
+- Never hardcode placeholder phone (`+91 00000 00000`), bogus email, studio address or random map query into deployed contact links.
+- The contact form submits to a Google Sheet (endpoint pending; `src/lib/enquiry.ts` is a stub until then). Do not launch publicly until the endpoint is live.
 - Validate client-side; normalize numbers cautiously and do not silently alter user intent.
-- No claims of successful submission/receipt after opening WhatsApp. User still presses Send.
+- Show the "we will get back to you shortly" confirmation only after the submit call resolves; surface an error if it fails.
 - Don't collect/store personal info in localStorage, analytics or logs without scope and consent.
 - Avoid `dangerouslySetInnerHTML` for user/customer content.
 

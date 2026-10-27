@@ -8,8 +8,8 @@ export function NavLinks() {
   const pathname = usePathname();
 
   return (
-    <nav aria-label="Main" className="hidden md:block">
-      <ul className="flex gap-8 text-sm">
+    <nav aria-label="Main" className="hidden lg:block">
+      <ul className="flex gap-7 text-base font-normal xl:gap-9">
         {navLinks.map((link) => {
           const isActive = pathname === link.href;
           return (
@@ -17,16 +17,20 @@ export function NavLinks() {
               <Link
                 href={link.href}
                 aria-current={isActive ? "page" : undefined}
-                className={`relative py-1.5 transition-colors duration-200 ${
+                className={`group relative py-1.5 tracking-[0.01em] transition-colors duration-200 ${
                   isActive
                     ? "text-(--color-text)"
                     : "text-(--color-muted) hover:text-(--color-text)"
                 }`}
               >
                 {link.label}
-                {isActive && (
-                  <span className="absolute left-0 right-0 -bottom-0.5 h-px bg-(--color-accent)" />
-                )}
+                {/* Gold underline: full width when active, grows from the centre on hover. */}
+                <span
+                  aria-hidden="true"
+                  className={`absolute inset-x-0 -bottom-0.5 h-0.5 origin-center rounded-full bg-(--color-accent) transition-transform duration-300 ${
+                    isActive ? "scale-x-100" : "scale-x-0 group-hover:scale-x-100"
+                  }`}
+                />
               </Link>
             </li>
           );

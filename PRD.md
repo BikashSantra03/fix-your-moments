@@ -1,18 +1,18 @@
 # Product Requirements Document (PRD)
 
 **Project:** Fix Your Moments — Photography Studio Website  
-**Owner/client:** Fix Your Moments (founder: Koushik Pramanik, per supplied demo)  
+**Owner/client:** Fix Your Moments (founder: Koushik Pramanik)  
 **Delivery:** Next.js marketing and portfolio website  
 **Status:** Implementation-ready working specification; several client inputs pending  
 **Last updated:** 2026-10-26
 
 ## 1. Source of truth and decision status
 
-- **Confirmed:** Client supplied `fix-your-moments.html` as the functional/content reference and shared https://www.rabinsphotography.com and https://www.sengalleries.com as inspiration. Client dislikes the green/teal-heavy styling in the HTML; redesign colors.
+- **Confirmed:** Client shared https://www.rabinsphotography.com and https://www.sengalleries.com as inspiration. Client dislikes green/teal-heavy styling; avoid it in the color palette.
 - **Confirmed:** Final photographs and videos are not yet supplied; expected in approximately 2–3 days. Development must proceed with clearly labeled placeholders.
 - **Working recommendation, NOT client-approved:** Cinematic Black & Champagne theme; five-page static-first Next.js website; WhatsApp enquiry flow; no CMS/database in v1.
 - **Source-specific example content, pending client verification:** Founder name, establishment year (2022), six service categories, descriptions, contact details, and business claims. Do not present placeholders or unverified claims as facts on a public launch.
-- **Reference priority:** This PRD + `Design.md` for agreed implementation decisions > client-approved updates > demo HTML for functional behavior > third-party websites for inspiration only. Do not copy third-party branding, photography, text, or code.
+- **Reference priority:** This PRD + `Design.md` for agreed implementation decisions > client-approved updates > third-party websites for inspiration only. Do not copy third-party branding, photography, text, or code.
 
 ## 2. Product vision
 
@@ -49,9 +49,9 @@ Deliver a visually striking, trustworthy, fast, mobile-first photography website
 
 ### 5.2 Home (`/`)
 
-- Cinematic hero with strong headline from provided reference, media backdrop, dark overlay, **Book Your Date** and **See Our Work** CTA.
+- Cinematic hero with strong headline, media backdrop, dark overlay, **Book Your Date** and **See Our Work** CTA.
 - Hero uses static placeholder image first; support muted inline background video later with poster/fallback and user-controlled sound only if appropriate.
-- Optional subtle photographic viewfinder/REC treatment from demo; avoid competing with imagery.
+- Optional subtle photographic viewfinder/REC treatment; avoid competing with imagery.
 - Service-name ribbon or less distracting category treatment.
 - Split-layout studio introduction + founder image (placeholder until received).
 - Six-service photographic card grid linking to services (and relevant section).
@@ -69,7 +69,7 @@ Deliver a visually striking, trustworthy, fast, mobile-first photography website
 
 ### 5.4 Services (`/services`)
 
-- Six service sections based on demo: Wedding; Pre-wedding; Haldi; Rice Ceremony; Corporate Events; Editorial & Portfolio Shoots.
+- Six service sections: Wedding; Pre-wedding; Haldi; Rice Ceremony; Corporate Events; Editorial & Portfolio Shoots.
 - Each service: photo, title, tagline, description, key offerings, **Enquire** and **See Work** actions.
 - Section anchors/quick-jump controls; direct links to specific services must work after refresh.
 - End with enquiry CTA.
@@ -77,16 +77,16 @@ Deliver a visually striking, trustworthy, fast, mobile-first photography website
 ### 5.5 About (`/about`)
 
 - Founder photo, studio story, approach, 4 steps: Talk → Plan → Shoot → Deliver.
-- Facts/claims from demo (2022 founded, delivery promises, etc.) are **unverified** until client approves.
+- Facts/claims (2022 founded, delivery promises, etc.) are **unverified** until client approves.
 - CTA to Contact.
 
 ### 5.6 Contact (`/contact`)
 
 - Form fields: name (required), mobile (required), shoot location (required), service/purpose (required), preferred date (recommended, optional until client confirms), message (optional).
 - Human-readable inline validation, optional client-side schema validation; clear non-deceptive success state.
-- On submit, construct encoded `https://wa.me/<countrycode-number>?text=...` and open via explicit submit interaction. **Do not claim an enquiry was delivered**; WhatsApp opening is not delivery confirmation.
+- On submit, send the enquiry to a Google Sheet (endpoint to be provided later) and show a "we will get back to you shortly" confirmation. No WhatsApp handoff from the form; WhatsApp stays available as a direct chat link.
 - Display phone, email, social links and studio address only after configured and validated. Map may remain hidden until location is confirmed.
-- No database capture or automatic email sending in v1.
+- No other database capture or automatic email sending in v1.
 
 ## 6. Non-functional requirements
 
@@ -123,9 +123,9 @@ These can be quoted as later features and should not be silently implemented.
 | Gallery photos | Pending | Local licensed placeholders | Yes |
 | Hero video | Pending | Static hero poster; optional placeholder reel only in local preview | No: can launch with photo if approved |
 | Logo | Pending confirmation | Text wordmark | Approval required |
-| Phone/WhatsApp/email | Demo includes placeholders | Central config with empty values; hide broken actions | Yes |
-| Studio address/map | Demo placeholder | Hide map pending verification | If displaying map, yes |
-| Founder/about claims | Demo content | Label as review-needed | Yes |
+| Phone/WhatsApp/email | Placeholders only | Central config with empty values; hide broken actions | Yes |
+| Studio address/map | Placeholder | Hide map pending verification | If displaying map, yes |
+| Founder/about claims | Draft content | Label as review-needed | Yes |
 | Domain | Unknown | Preview on Vercel | Yes for custom-domain launch |
 | CMS vs manual updates | Not yet confirmed | Typed static content | Confirm scope before expanding |
 
