@@ -78,7 +78,7 @@ export function MobileMenu() {
                   tabIndex={open ? 0 : -1}
                   aria-current={isActive ? "page" : undefined}
                   className={`block py-4 text-2xl font-display ${
-                    isActive ? "text-(--color-accent)" : "text-(--color-text)"
+                    isActive ? "text-(--color-accent-text)" : "text-(--color-text)"
                   }`}
                 >
                   {link.label}

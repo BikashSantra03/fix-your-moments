@@ -9,6 +9,7 @@
   --color-surface: #222126;
   --color-accent: #d8b878;
   --color-accent-contrast: #1a1a1d;
+  --color-accent-text: var(--color-accent); /* gold used as text/icons; darker in light mode for contrast */
   --color-cta: var(--color-accent);
   --color-cta-contrast: var(--color-accent-contrast);
   --color-text: #f6f1e9;
@@ -33,6 +34,7 @@
   --color-surface: #f6f5f3;
   --color-accent: #d8b878;
   --color-accent-contrast: #1a1a1d;
+  --color-accent-text: #85652a; /* ~5:1 on white; plain gold is ~1.9:1 */
   --color-cta: var(--color-accent);
   --color-cta-contrast: var(--color-accent-contrast);
   --color-text: #1a1a1d;
@@ -48,6 +50,7 @@
   --color-surface: var(--color-surface);
   --color-accent: var(--color-accent);
   --color-accent-contrast: var(--color-accent-contrast);
+  --color-accent-text: var(--color-accent-text);
   --color-cta: var(--color-cta);
   --color-cta-contrast: var(--color-cta-contrast);
   --color-text: var(--color-text);
@@ -61,31 +64,34 @@
   --font-body: var(--font-body);
 }
 
-html {
-  scroll-behavior: smooth;
-}
+/* In the base layer so Tailwind utilities (font-body, leading-*, …) can override these defaults. */
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
 
-body {
-  background: var(--color-bg);
-  color: var(--color-text);
-  font-family: var(--font-body);
-  font-weight: 300;
-  line-height: 1.6;
-  -webkit-font-smoothing: antialiased;
-}
+  body {
+    background: var(--color-bg);
+    color: var(--color-text);
+    font-family: var(--font-body);
+    font-weight: 300;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
 
-:focus-visible {
-  outline: 2px solid var(--color-accent);
-  outline-offset: 3px;
-}
+  :focus-visible {
+    outline: 2px solid var(--color-accent);
+    outline-offset: 3px;
+  }
 
-h1,
-h2,
-h3 {
-  font-family: var(--font-display);
-  font-weight: 400;
-  line-height: 1.1;
-  letter-spacing: -0.01em;
+  h1,
+  h2,
+  h3 {
+    font-family: var(--font-display);
+    font-weight: 400;
+    line-height: 1.1;
+    letter-spacing: -0.01em;
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {

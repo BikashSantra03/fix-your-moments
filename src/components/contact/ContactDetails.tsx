@@ -4,12 +4,12 @@ import { directionsUrl, getSocialLinks, telHref, whatsappChatLink } from "@/lib/
 import { HeartIcon, MailIcon, PhoneIcon, PinIcon } from "@/components/ui/icons";
 
 const pillClasses =
-  "inline-flex items-center gap-1.5 rounded-full border border-(--color-border-dark) px-4 py-2 text-sm font-medium text-(--color-text) transition-colors duration-200 hover:border-(--color-accent) hover:text-(--color-accent)";
+  "inline-flex items-center gap-1.5 rounded-full border border-(--color-border-dark) px-4 py-2 text-sm font-medium text-(--color-text) transition-colors duration-200 hover:border-(--color-accent) hover:text-(--color-accent-text)";
 
 function DetailCard({ icon, label, children }: { icon: ReactNode; label: string; children: ReactNode }) {
   return (
     <div className="flex gap-4 rounded-2xl border border-(--color-border-dark) bg-(--color-surface) p-5 sm:p-6">
-      <span className="grid h-11 w-11 shrink-0 place-items-center rounded-full bg-(--color-accent)/15 text-(--color-accent)">
+      <span className="grid h-11 w-11 shrink-0 place-items-center rounded-full bg-(--color-accent)/15 text-(--color-accent-text)">
         {icon}
       </span>
       <div className="min-w-0 flex-1">
@@ -32,7 +32,7 @@ export function ContactDetails() {
           {phone && (
             <a
               href={telHref(phone)}
-              className="whitespace-nowrap font-display text-xl text-(--color-text) hover:text-(--color-accent) sm:text-2xl"
+              className="whitespace-nowrap font-display text-xl text-(--color-text) hover:text-(--color-accent-text) sm:text-2xl"
             >
               {phone}
             </a>
@@ -54,7 +54,7 @@ export function ContactDetails() {
 
       {address && (
         <DetailCard icon={<PinIcon />} label="Visit the studio">
-          <address className="font-display text-xl not-italic leading-snug text-(--color-text)">{address}</address>
+          <address className="font-display text-lg not-italic leading-snug sm:text-xl text-(--color-text)">{address}</address>
           <a
             href={directionsUrl(mapQuery ?? address)}
             target="_blank"
@@ -69,8 +69,13 @@ export function ContactDetails() {
 
       {email && (
         <DetailCard icon={<MailIcon />} label="Email">
-          <a href={`mailto:${email}`} className="break-all font-display text-xl text-(--color-text) hover:text-(--color-accent)">
-            {email}
+          {/* Sans is narrower than the display serif; <wbr> lets a long address wrap after "@" rather than mid-word. */}
+          <a
+            href={`mailto:${email}`}
+            className="break-words text-lg font-normal text-(--color-text) hover:text-(--color-accent-text) sm:text-xl"
+          >
+            {email.split("@")[0]}@<wbr />
+            {email.split("@")[1]}
           </a>
         </DetailCard>
       )}

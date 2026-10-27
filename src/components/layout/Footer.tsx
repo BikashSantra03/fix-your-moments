@@ -9,9 +9,9 @@ import { MailIcon, PhoneIcon } from "@/components/ui/icons";
 import { telHref } from "@/lib/contact";
 
 const linkClasses =
-  "inline-flex items-center gap-2.5 text-(--color-muted) transition-[color,transform] duration-200 hover:translate-x-1 hover:text-(--color-accent)";
+  "inline-flex items-center gap-2.5 text-(--color-muted) transition-[color,transform] duration-200 hover:translate-x-1 hover:text-(--color-accent-text)";
 
-const footerIconClasses = "h-4 w-4 shrink-0 text-(--color-accent)";
+const footerIconClasses = "h-4 w-4 shrink-0 text-(--color-accent-text)";
 
 function FooterHeading({ children }: { children: ReactNode }) {
   return (

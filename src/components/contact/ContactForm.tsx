@@ -20,13 +20,12 @@ interface FieldProps {
   id: string;
   label: string;
   error?: string;
-  hint?: string;
   optional?: boolean;
   className?: string;
   children: ReactNode;
 }
 
-function Field({ id, label, error, hint, optional, className = "", children }: FieldProps) {
+function Field({ id, label, error, optional, className = "", children }: FieldProps) {
   return (
     <div className={`flex flex-col gap-2 ${className}`}>
       <label htmlFor={id} className="text-sm font-medium text-(--color-text)">
@@ -34,20 +33,14 @@ function Field({ id, label, error, hint, optional, className = "", children }: F
         {optional && <span className="ml-1.5 font-normal text-(--color-muted)">(optional)</span>}
       </label>
       {children}
-      <ErrorText id={`${id}-error`} error={error} hint={hint} hintId={`${id}-hint`} />
+      <ErrorText id={`${id}-error`} error={error} />
     </div>
   );
 }
 
-function ErrorText({ id, error, hint, hintId }: { id: string; error?: string; hint?: string; hintId?: string }) {
-  if (hint && !error)
-    return (
-      <p id={hintId} className="text-xs text-(--color-muted)">
-        {hint}
-      </p>
-    );
+function ErrorText({ id, error }: { id: string; error?: string }) {
   return (
-    <p id={id} className="min-h-4 text-xs text-(--color-error)" aria-live="polite">
+    <p id={id} className="text-xs text-(--color-error)" aria-live="polite">
       {error}
     </p>
   );
@@ -107,15 +100,14 @@ export function ContactForm({ initialPurpose = "" }: ContactFormProps) {
     setStatus("done");
   }
 
-  function describedBy(field: keyof EnquiryInput, hasHint = false) {
-    if (errors[field]) return `f-${field}-error`;
-    return hasHint ? `f-${field}-hint` : undefined;
+  function describedBy(field: keyof EnquiryInput) {
+    return errors[field] ? `f-${field}-error` : undefined;
   }
 
   if (status === "done") {
     return (
       <div role="status" className="flex flex-col items-center py-12 text-center">
-        <span className="mb-6 grid h-16 w-16 place-items-center rounded-full bg-(--color-accent)/15 text-(--color-accent)">
+        <span className="mb-6 grid h-16 w-16 place-items-center rounded-full bg-(--color-accent)/15 text-(--color-accent-text)">
           <svg viewBox="0 0 24 24" className="h-8 w-8" fill="none" stroke="currentColor" strokeWidth="1.8" aria-hidden="true">
             <path d="M5 12.5l4.5 4.5L19 7.5" strokeLinecap="round" strokeLinejoin="round" />
           </svg>
@@ -127,7 +119,7 @@ export function ContactForm({ initialPurpose = "" }: ContactFormProps) {
         <button
           type="button"
           onClick={() => setStatus("idle")}
-          className="mt-8 text-sm font-medium text-(--color-accent) underline-offset-4 hover:underline"
+          className="mt-8 text-sm font-medium text-(--color-accent-text) underline-offset-4 hover:underline"
         >
           Send another enquiry
         </button>
@@ -214,7 +206,7 @@ export function ContactForm({ initialPurpose = "" }: ContactFormProps) {
         />
       </Field>
 
-      <Field id="f-date" label="Preferred date" optional hint="Leave blank if it's not fixed yet." error={errors.date}>
+      <Field id="f-date" label="Preferred date" optional error={errors.date}>
         <input
           id="f-date"
           name="date"
@@ -225,8 +217,8 @@ export function ContactForm({ initialPurpose = "" }: ContactFormProps) {
           value={values.date}
           onChange={update}
           aria-invalid={Boolean(errors.date)}
-          aria-describedby={describedBy("date", true)}
-          className={`${controlClasses}`}
+          aria-describedby={describedBy("date")}
+          className={controlClasses}
         />
       </Field>
 
