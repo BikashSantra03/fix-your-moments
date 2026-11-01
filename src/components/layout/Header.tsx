@@ -7,6 +7,9 @@ import { Button } from "@/components/ui/Button";
 import { MobileMenu } from "@/components/layout/MobileMenu";
 import { NavLinks } from "@/components/layout/NavLinks";
 import { Logo } from "@/components/layout/Logo";
+import { services } from "@/data/services";
+
+const serviceHeroPaths = new Set(services.map((service) => `/services/${service.id}`));
 
 export function Header() {
   const pathname = usePathname();
@@ -19,7 +22,7 @@ export function Header() {
     return () => window.removeEventListener("scroll", update);
   }, [pathname]);
 
-  const overlayPhotoHero = ["/services/wedding", "/services/prewedding", "/services/engagement", "/services/bridhi", "/services/rice"].includes(pathname) && atTop;
+  const overlayPhotoHero = serviceHeroPaths.has(pathname) && atTop;
 
   return (
     <header className="fixed inset-x-0 top-0 z-50">
