@@ -19,7 +19,7 @@ export function Header() {
     return () => window.removeEventListener("scroll", update);
   }, [pathname]);
 
-  const overlayPhotoHero = ["/services/wedding", "/services/prewedding", "/services/engagement", "/services/bridhi"].includes(pathname) && atTop;
+  const overlayPhotoHero = ["/services/wedding", "/services/prewedding", "/services/engagement", "/services/bridhi", "/services/rice"].includes(pathname) && atTop;
 
   return (
     <header className="fixed inset-x-0 top-0 z-50">

@@ -8,6 +8,7 @@ import { WeddingPage } from "@/components/services/WeddingPage";
 import { PreWeddingPage } from "@/components/services/PreWeddingPage";
 import { EngagementPage } from "@/components/services/EngagementPage";
 import { BridhiPage } from "@/components/services/BridhiPage";
+import { RiceCeremonyPage } from "@/components/services/RiceCeremonyPage";
 
 type ServicePageProps = { params: Promise<{ slug: string }> };
 
@@ -22,6 +23,7 @@ export async function generateMetadata({ params }: ServicePageProps): Promise<Me
   if (slug === "prewedding") return { title: "Pre-wedding Photography", description: "Relaxed, personal pre-wedding photography by Fix Your Moments in Kolkata and beyond." };
   if (slug === "engagement") return { title: "Engagement Photography", description: "Engagement and ring ceremony photography by Fix Your Moments. Candid moments, intimate portraits and the details of your celebration." };
   if (slug === "bridhi") return { title: "Bridhi Photography", description: "Bridhi photography by Fix Your Moments. Traditional details, candid celebrations and personal portraits from your day." };
+  if (slug === "rice") return { title: "Rice Ceremony Photography", description: "Rice ceremony photography by Fix Your Moments. Gentle baby portraits and memories of a milestone shared with family." };
   return service ? { title: service.name, description: service.description } : {};
 }
 
@@ -33,6 +35,7 @@ export default async function ServicePage({ params }: ServicePageProps) {
   if (slug === "prewedding") return <PreWeddingPage />;
   if (slug === "engagement") return <EngagementPage />;
   if (slug === "bridhi") return <BridhiPage />;
+  if (slug === "rice") return <RiceCeremonyPage />;
 
   return (
     <main className="flex-1">
