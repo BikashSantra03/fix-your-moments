@@ -12,6 +12,7 @@ const content: ServicePageContent = {
     emphasis: "there is us.",
     description: "An afternoon that feels like yours. A place you love. The little ways you find each other, captured before the celebrations begin.",
     primaryAction: "Plan your pre-wedding shoot",
+    galleryAction: "Discover the moments",
     titleClassName: "text-[clamp(3rem,4.5vw,5rem)] leading-[0.98] tracking-[-0.035em]",
     titleLeadClassName: "block sm:whitespace-nowrap",
     emphasisClassName: "block",
@@ -61,10 +62,10 @@ const content: ServicePageContent = {
     ],
   },
   closing: {
-    firstImage: "couple-forehead-closeup.webp",
-    firstAlt: "A close, tender moment between a couple",
-    secondImage: "couple-in-candlelight.webp",
-    secondAlt: "A couple together in warm candlelight",
+    photos: [
+      { src: "couple-forehead-closeup.webp", alt: "A close, tender moment between a couple" },
+      { src: "couple-in-candlelight.webp", alt: "A couple together in warm candlelight" },
+    ],
     eyebrow: "Your story, your pace",
     title: "Let’s make a day of it.",
     description: "Tell us what feels like you: a place, a mood, or simply a day to spend together. We’ll help shape it into a shoot that feels easy and personal.",

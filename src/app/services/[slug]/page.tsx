@@ -6,6 +6,7 @@ import { Button } from "@/components/ui/Button";
 import { services } from "@/data/services";
 import { WeddingPage } from "@/components/services/WeddingPage";
 import { PreWeddingPage } from "@/components/services/PreWeddingPage";
+import { EngagementPage } from "@/components/services/EngagementPage";
 
 type ServicePageProps = { params: Promise<{ slug: string }> };
 
@@ -18,6 +19,7 @@ export async function generateMetadata({ params }: ServicePageProps): Promise<Me
   const service = services.find((item) => item.id === slug);
   if (slug === "wedding") return { title: "Wedding Photography", description: "Wedding celebrations, portraits and rituals photographed by Fix Your Moments." };
   if (slug === "prewedding") return { title: "Pre-wedding Photography", description: "Relaxed, personal pre-wedding photography by Fix Your Moments in Kolkata and beyond." };
+  if (slug === "engagement") return { title: "Engagement Photography", description: "Engagement and ring ceremony photography by Fix Your Moments. Candid moments, intimate portraits and the details of your celebration." };
   return service ? { title: service.name, description: service.description } : {};
 }
 
@@ -27,6 +29,7 @@ export default async function ServicePage({ params }: ServicePageProps) {
   if (!service) notFound();
   if (slug === "wedding") return <WeddingPage />;
   if (slug === "prewedding") return <PreWeddingPage />;
+  if (slug === "engagement") return <EngagementPage />;
 
   return (
     <main className="flex-1">

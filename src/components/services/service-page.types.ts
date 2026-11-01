@@ -19,6 +19,7 @@ export type ServicePageContent = {
     emphasisClassName?: string;
     description: string;
     primaryAction: string;
+    galleryAction: string;
     titleClassName: string;
     contentClassName: string;
     descriptionClassName: string;
@@ -26,7 +27,7 @@ export type ServicePageContent = {
     imageClassName: string;
     overlayClassName: string;
   };
-  story: {
+  story?: {
     image: string;
     alt: string;
     eyebrow: string;
@@ -45,16 +46,13 @@ export type ServicePageContent = {
     title: string;
     photos: readonly ServicePhoto[];
     mobileVisibleCount: number;
-    desktopColumns: 3 | 6;
+    desktopColumns: 3 | 4 | 6;
     centerLastPair?: boolean;
     headingMarginClassName: string;
     gridGapClassName: string;
   };
   closing: {
-    firstImage: string;
-    firstAlt: string;
-    secondImage: string;
-    secondAlt: string;
+    photos?: readonly [Pick<ServicePhoto, "src" | "alt">, Pick<ServicePhoto, "src" | "alt">];
     eyebrow: string;
     title: string;
     description: string;

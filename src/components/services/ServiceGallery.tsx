@@ -7,13 +7,25 @@ import type { ServicePageContent, ServicePhoto } from "@/components/services/ser
 
 type ServiceGalleryProps = Pick<ServicePageContent, "base" | "gallery">;
 
+const desktopGridClasses = {
+  3: "lg:grid-cols-3",
+  4: "lg:grid-cols-4",
+  6: "lg:grid-cols-6",
+} as const;
+
 export function ServiceGallery({ base, gallery }: ServiceGalleryProps) {
   const dialogRef = useRef<HTMLDialogElement>(null);
   const [activeIndex, setActiveIndex] = useState<number | null>(null);
   const [showAll, setShowAll] = useState(false);
   const viewerOpen = activeIndex !== null;
   const photos = gallery.photos;
-  const centeredLastPair = gallery.centerLastPair && photos.length % 3 === 2;
+  const centeredLastPair = gallery.desktopColumns === 6 && gallery.centerLastPair && photos.length % 3 === 2;
+
+  function photoAspectClassName(photo: ServicePhoto) {
+    if (gallery.desktopColumns === 6) return "aspect-[4/5]";
+    if (photo.wide) return "aspect-[1.56] lg:aspect-[1.53]";
+    return "aspect-[3/4]";
+  }
 
   useEffect(() => {
     if (!viewerOpen) return;
@@ -55,17 +67,17 @@ export function ServiceGallery({ base, gallery }: ServiceGalleryProps) {
         </div>
         <div
           id={`${gallery.id}-photo-grid`}
-          className={`grid grid-cols-2 ${gallery.gridGapClassName} ${gallery.desktopColumns === 6 ? "lg:grid-cols-6" : "lg:grid-cols-3"}`}
+          className={`grid grid-cols-2 ${gallery.gridGapClassName} ${desktopGridClasses[gallery.desktopColumns]}`}
         >
           {photos.map((photo, index) => (
             <figure key={photo.src} className={cardClassName(photo, index)}>
               <button type="button" onClick={() => open(index)} aria-label={`View photograph: ${photo.alt}`} className="service-gallery-photo relative block w-full cursor-pointer overflow-hidden bg-(--color-border-dark) text-left focus-visible:outline-offset-4">
-                <span className={`relative block ${photo.wide ? gallery.desktopColumns === 3 ? "aspect-[1.56] lg:aspect-[1.53]" : "aspect-[4/5]" : gallery.desktopColumns === 6 ? "aspect-[4/5]" : "aspect-[3/4]"}`}>
+                <span className={`relative block ${photoAspectClassName(photo)}`}>
                   <Image
                     src={`${base}${photo.src}`}
                     alt=""
                     fill
-                    sizes={photo.wide ? "(max-width: 1023px) 100vw, 66vw" : "(max-width: 1023px) 50vw, 33vw"}
+                    sizes={photo.wide ? "(max-width: 1023px) 100vw, 66vw" : gallery.desktopColumns === 4 ? "(max-width: 1023px) 50vw, 25vw" : "(max-width: 1023px) 50vw, 33vw"}
                     className="object-cover"
                     style={photo.position ? { objectPosition: photo.position } : undefined}
                   />
@@ -75,7 +87,7 @@ export function ServiceGallery({ base, gallery }: ServiceGalleryProps) {
             </figure>
           ))}
         </div>
-        {!showAll && (
+        {!showAll && photos.length > gallery.mobileVisibleCount && (
           <div className="mt-9 text-center sm:hidden">
             <button type="button" onClick={() => setShowAll(true)} aria-controls={`${gallery.id}-photo-grid`} aria-expanded={false} className="min-h-11 rounded-full border border-(--color-accent) px-6 py-3 text-sm font-medium text-(--color-accent-text) transition-colors hover:bg-(--color-accent) hover:text-white">
               Show more photographs

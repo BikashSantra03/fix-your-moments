@@ -24,13 +24,13 @@ export function ServicePageLayout({ content }: { content: ServicePageContent }) 
             <p className={`mt-7 text-base leading-relaxed text-white/90 sm:text-lg ${hero.descriptionClassName}`}>{hero.description}</p>
             <div className="mt-9 flex flex-wrap gap-3">
               <Button href={`/contact?service=${slug}`}>{hero.primaryAction}</Button>
-              <a href={`#${gallery.id}`} className="inline-flex min-h-11 items-center px-3 text-sm font-medium text-white underline-offset-4 hover:underline">Explore the photographs ↓</a>
+              <a href={`#${gallery.id}`} className="inline-flex min-h-11 items-center px-3 text-sm font-medium text-white underline-offset-4 hover:underline">{hero.galleryAction} ↓</a>
             </div>
           </div>
         </Container>
       </section>
 
-      <section className="py-14 sm:py-20 lg:py-28">
+      {story && <section className="py-14 sm:py-20 lg:py-28">
         <Container className={`grid items-center gap-10 lg:gap-20 ${story.columnsClassName}`}>
           <div className={story.imageOrderClassName}>
             {story.eyebrowPosition === "image" && <p className="mb-6 text-sm font-medium uppercase tracking-[0.16em] text-(--color-accent-text)">{story.eyebrow}</p>}
@@ -44,24 +44,23 @@ export function ServicePageLayout({ content }: { content: ServicePageContent }) 
             <p className="mt-6 max-w-[60ch] text-base leading-relaxed text-(--color-muted) sm:text-lg">{story.description}</p>
           </div>
         </Container>
-      </section>
+      </section>}
 
       <ServiceGallery base={base} gallery={gallery} />
 
       <section className="py-14 sm:py-20 lg:py-28">
-        <Container className="grid items-center gap-10 lg:grid-cols-[1fr_1fr] lg:gap-20">
-          <div className="grid grid-cols-2 gap-3 sm:gap-5">
-            <div className="relative aspect-[3/4] translate-y-3 overflow-hidden bg-(--color-surface) sm:translate-y-5 lg:translate-y-8">
-              <Image src={`${base}${closing.firstImage}`} alt={closing.firstAlt} fill sizes="(max-width: 1023px) 50vw, 25vw" className="object-cover" />
-            </div>
-            <div className="relative aspect-[3/4] overflow-hidden bg-(--color-surface)">
-              <Image src={`${base}${closing.secondImage}`} alt={closing.secondAlt} fill sizes="(max-width: 1023px) 50vw, 25vw" className="object-cover" />
-            </div>
-          </div>
-          <div>
+        <Container className={closing.photos ? "grid items-center gap-10 lg:grid-cols-[1fr_1fr] lg:gap-20" : "text-center"}>
+          {closing.photos && <div className="grid grid-cols-2 gap-3 sm:gap-5">
+            {closing.photos.map((photo, index) => (
+              <div key={photo.src} className={`relative aspect-[3/4] overflow-hidden bg-(--color-surface) ${index === 0 ? "translate-y-3 sm:translate-y-5 lg:translate-y-8" : ""}`}>
+                <Image src={`${base}${photo.src}`} alt={photo.alt} fill sizes="(max-width: 1023px) 50vw, 25vw" className="object-cover" />
+              </div>
+            ))}
+          </div>}
+          <div className={closing.photos ? undefined : "mx-auto max-w-[760px]"}>
             <p className="mb-4 text-sm font-medium uppercase tracking-[0.16em] text-(--color-accent-text)">{closing.eyebrow}</p>
-            <h2 className={closing.titleClassName}>{closing.title}</h2>
-            <p className="mt-6 max-w-[46ch] text-base leading-relaxed text-(--color-muted) sm:text-lg">{closing.description}</p>
+            <h2 className={`${closing.titleClassName} ${closing.photos ? "" : "mx-auto"}`}>{closing.title}</h2>
+            <p className={`mt-6 max-w-[46ch] text-base leading-relaxed text-(--color-muted) sm:text-lg ${closing.photos ? "" : "mx-auto"}`}>{closing.description}</p>
             <div className="mt-8"><Button href={`/contact?service=${slug}`}>{closing.action}</Button></div>
           </div>
         </Container>

@@ -12,6 +12,7 @@ const content: ServicePageContent = {
     emphasis: "remember.",
     description: "The rituals, the rush, the quiet glances between it all. A wedding is made of moments both grand and small.",
     primaryAction: "Enquire for your wedding",
+    galleryAction: "Explore the celebrations",
     titleClassName: "max-w-[9ch] text-[clamp(3.5rem,6vw,6rem)] leading-[0.98] tracking-[-0.035em]",
     contentClassName: "max-w-[520px]",
     descriptionClassName: "max-w-[38ch]",
@@ -57,10 +58,10 @@ const content: ServicePageContent = {
     ],
   },
   closing: {
-    firstImage: "bride-holding-betel-leaf.webp",
-    firstAlt: "Bride holding a betel leaf during a wedding ritual",
-    secondImage: "couple-forehead-touch.webp",
-    secondAlt: "Newly married couple sharing a quiet moment",
+    photos: [
+      { src: "bride-holding-betel-leaf.webp", alt: "Bride holding a betel leaf during a wedding ritual" },
+      { src: "couple-forehead-touch.webp", alt: "Newly married couple sharing a quiet moment" },
+    ],
     eyebrow: "Your day, your story",
     title: "Let’s talk about your celebration.",
     description: "Tell us the date, the place and the moments that matter to you. We’ll take the conversation from there.",
