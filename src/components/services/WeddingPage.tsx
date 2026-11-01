@@ -29,8 +29,6 @@ const content: ServicePageContent = {
     description: "From the first preparations to the last gathering of family, each part of a wedding carries its own feeling. Explore the celebrations, portraits and rituals in the collection below.",
     titleClassName: "max-w-[18ch] text-[clamp(2.35rem,3.8vw,3.9rem)]",
     columnsClassName: "lg:grid-cols-[0.85fr_1.15fr]",
-    imageOrderClassName: "",
-    textOrderClassName: "",
   },
   gallery: {
     id: "wedding-gallery",

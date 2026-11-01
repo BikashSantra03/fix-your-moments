@@ -1,6 +1,6 @@
 import type { Service } from "@/types/content";
 
-// Short descriptions are provisional until each service page is developed.
+// Brief service summaries used in navigation and service cards.
 export const services: Service[] = [
   { id: "wedding", name: "Wedding", tagline: "Wedding photography", description: "Wedding celebrations and the people who make them memorable.", image: "/images/services/wedding/couple-under-red-drapes.webp", features: [], order: 1 },
   { id: "prewedding", name: "Pre-wedding", tagline: "Pre-wedding photography", description: "Portraits of your story before the wedding day.", image: "/images/services/prewedding/couple-in-ornate-hall.webp", features: [], order: 2 },

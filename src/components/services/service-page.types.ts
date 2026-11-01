@@ -36,8 +36,8 @@ export type ServicePageContent = {
     description: string;
     titleClassName: string;
     columnsClassName: string;
-    imageOrderClassName: string;
-    textOrderClassName: string;
+    imageOrderClassName?: string;
+    textOrderClassName?: string;
     imagePosition?: string;
   };
   gallery: {
