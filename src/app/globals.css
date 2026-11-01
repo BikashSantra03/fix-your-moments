@@ -101,14 +101,26 @@
   -webkit-text-stroke: 1px color-mix(in srgb, var(--color-text) 22%, transparent);
 }
 
-.wedding-gallery-photo > span {
+.service-gallery-photo img {
   transition-property: transform;
   transition-duration: 650ms !important;
   transition-timing-function: cubic-bezier(0.2, 0.7, 0.2, 1);
+  transform-origin: center;
 }
 
-.wedding-gallery-photo:hover > span,
-.wedding-gallery-photo:focus-visible > span {
+.service-gallery-photo:hover img,
+.service-gallery-photo:focus-visible img {
   transform: scale(1.08);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .service-gallery-photo img {
+    transition: none !important;
+  }
+
+  .service-gallery-photo:hover img,
+  .service-gallery-photo:focus-visible img {
+    transform: none;
+  }
 }
 

@@ -1,0 +1,78 @@
+import { ServicePageLayout } from "@/components/services/ServicePageLayout";
+import type { ServicePageContent } from "@/components/services/service-page.types";
+
+const content: ServicePageContent = {
+  slug: "prewedding",
+  base: "/images/services/prewedding/",
+  hero: {
+    image: "couple-at-campfire.webp",
+    alt: "A couple sharing a quiet evening together by a campfire",
+    eyebrow: "Pre-wedding photography",
+    title: "Before the vows,",
+    emphasis: "there is us.",
+    description: "An afternoon that feels like yours. A place you love. The little ways you find each other, captured before the celebrations begin.",
+    primaryAction: "Plan your pre-wedding shoot",
+    titleClassName: "text-[clamp(3rem,4.5vw,5rem)] leading-[0.98] tracking-[-0.035em]",
+    titleLeadClassName: "block sm:whitespace-nowrap",
+    emphasisClassName: "block",
+    contentClassName: "max-w-[680px]",
+    descriptionClassName: "max-w-[40ch]",
+    containerClassName: "py-24",
+    imageClassName: "object-[58%_center] sm:object-center",
+    overlayClassName: "bg-gradient-to-b from-black/70 via-black/40 to-black/15 sm:bg-[linear-gradient(90deg,rgba(0,0,0,.78)_0%,rgba(0,0,0,.58)_34%,rgba(0,0,0,.18)_68%,transparent_100%)]",
+  },
+  story: {
+    image: "couple-under-branches.webp",
+    alt: "A couple sharing a natural, affectionate moment beneath leafy branches",
+    eyebrow: "A little space before the celebration",
+    eyebrowPosition: "text",
+    title: "The best photographs feel like you.",
+    description: "No stiff poses or borrowed stories. We make room for the way you laugh, wander and look at one another, then let the photographs grow from there.",
+    titleClassName: "max-w-[16ch] text-[clamp(2.35rem,3.8vw,3.9rem)]",
+    columnsClassName: "lg:grid-cols-[1.05fr_0.95fr]",
+    imageOrderClassName: "order-1 lg:order-2",
+    textOrderClassName: "order-2 lg:order-1",
+    imagePosition: "center 58%",
+  },
+  gallery: {
+    id: "prewedding-gallery",
+    eyebrow: "The pre-wedding collection",
+    title: "A little time, just for you.",
+    mobileVisibleCount: 8,
+    desktopColumns: 6,
+    centerLastPair: true,
+    headingMarginClassName: "mb-9 sm:mb-12",
+    gridGapClassName: "gap-x-3 gap-y-4 sm:gap-x-5 sm:gap-y-6",
+    photos: [
+      { src: "couple-at-green-door.webp", alt: "Couple walking together through a green heritage doorway", label: "A little colour" },
+      { src: "couple-at-sunset.webp", alt: "Couple sharing a close moment in the evening light", label: "The last light" },
+      { src: "couple-at-heritage-window.webp", alt: "Couple framed by an old green window", label: "Old-world light", position: "28% center" },
+      { src: "couple-by-red-wall.webp", alt: "Couple sharing a playful moment beside a red wall", label: "In the red" },
+      { src: "couple-by-window.webp", alt: "Couple sharing a tender moment in soft window light", label: "Window light" },
+      { src: "couple-closeup.webp", alt: "Close portrait of a couple together", label: "Close to you" },
+      { src: "couple-in-red-dress-by-trees.webp", alt: "Couple together among dark green trees, with the bride in red", label: "A touch of red" },
+      { src: "couple-in-sunlit-room.webp", alt: "Couple sharing a playful moment in a bright room", label: "A slow afternoon" },
+      { src: "couple-on-mountain-terrace.webp", alt: "Couple standing together above a mountain landscape", label: "Above the clouds" },
+      { src: "couple-on-village-lane.webp", alt: "Couple walking together along a village lane", label: "Down the lane", position: "72% center" },
+      { src: "couple-under-flowering-tree.webp", alt: "Couple walking beneath a flowering tree", label: "In bloom" },
+      { src: "couple-under-trees.webp", alt: "Couple sharing a quiet moment in a leafy garden", label: "A little shade" },
+      { src: "couple-with-blue-fabric.webp", alt: "Couple posing together with flowing blue fabric", label: "In motion" },
+      { src: "couple-with-umbrella-by-train.webp", alt: "Couple sharing umbrellas beside a blue train", label: "A rainy-day story", position: "32% center" },
+    ],
+  },
+  closing: {
+    firstImage: "couple-forehead-closeup.webp",
+    firstAlt: "A close, tender moment between a couple",
+    secondImage: "couple-in-candlelight.webp",
+    secondAlt: "A couple together in warm candlelight",
+    eyebrow: "Your story, your pace",
+    title: "Let’s make a day of it.",
+    description: "Tell us what feels like you: a place, a mood, or simply a day to spend together. We’ll help shape it into a shoot that feels easy and personal.",
+    action: "Enquire about your shoot",
+    titleClassName: "max-w-[15ch] text-[clamp(2.7rem,4.5vw,4.8rem)]",
+  },
+};
+
+export function PreWeddingPage() {
+  return <ServicePageLayout content={content} />;
+}

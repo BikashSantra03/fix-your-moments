@@ -19,25 +19,25 @@ export function Header() {
     return () => window.removeEventListener("scroll", update);
   }, [pathname]);
 
-  const overlayWeddingHero = pathname === "/services/wedding" && atTop;
+  const overlayPhotoHero = (pathname === "/services/wedding" || pathname === "/services/prewedding") && atTop;
 
   return (
     <header className="fixed inset-x-0 top-0 z-50">
       <div
         aria-hidden="true"
-        className={`pointer-events-none absolute inset-0 border-b transition-[background-color,border-color] duration-300 ${overlayWeddingHero ? "border-transparent bg-transparent" : "border-(--color-border-dark) bg-(--color-bg)/90 backdrop-blur-sm"}`}
+        className={`pointer-events-none absolute inset-0 border-b transition-[background-color,border-color] duration-300 ${overlayPhotoHero ? "border-transparent bg-transparent" : "border-(--color-border-dark) bg-(--color-bg)/90 backdrop-blur-sm"}`}
       />
       <Container className="relative">
         <div className="flex items-center justify-between h-[78px]">
-          <Logo overlay={overlayWeddingHero} />
+          <Logo overlay={overlayPhotoHero} />
 
-          <NavLinks overlay={overlayWeddingHero} />
+          <NavLinks overlay={overlayPhotoHero} />
 
           <div className="flex items-center gap-2">
             <div className="hidden md:block">
               <Button href="/contact">Book a shoot</Button>
             </div>
-            <MobileMenu overlay={overlayWeddingHero} />
+            <MobileMenu overlay={overlayPhotoHero} />
           </div>
         </div>
       </Container>
