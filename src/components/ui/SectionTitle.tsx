@@ -14,7 +14,7 @@ export function SectionTitle({
   return (
     <div className={className}>
       {eyebrow && (
-        <p className="text-(--color-accent-text) text-sm tracking-wide uppercase mb-3 font-medium">
+        <p className="text-(--color-accent-text) text-sm tracking-[0.18em] uppercase mb-5 font-medium">
           {eyebrow}
         </p>
       )}

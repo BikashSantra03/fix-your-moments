@@ -4,8 +4,9 @@ import { useEffect, useId, useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { navLinks } from "@/config/navigation";
+import { services } from "@/data/services";
 
-export function MobileMenu() {
+export function MobileMenu({ overlay = false }: { overlay?: boolean }) {
   const [open, setOpen] = useState(false);
   const pathname = usePathname();
   const menuId = useId();
@@ -44,17 +45,17 @@ export function MobileMenu() {
       >
         <span className="sr-only">{open ? "Close menu" : "Open menu"}</span>
         <span
-          className={`absolute left-2.5 right-2.5 h-px bg-(--color-text) transition-transform duration-300 ${
+          className={`absolute left-2.5 right-2.5 h-px transition-transform duration-300 ${overlay ? "bg-white" : "bg-(--color-text)"} ${
             open ? "translate-y-0 rotate-45" : "-translate-y-1.5"
           }`}
         />
         <span
-          className={`absolute left-2.5 right-2.5 h-px bg-(--color-text) transition-opacity duration-300 ${
+          className={`absolute left-2.5 right-2.5 h-px transition-opacity duration-300 ${overlay ? "bg-white" : "bg-(--color-text)"} ${
             open ? "opacity-0" : "opacity-100"
           }`}
         />
         <span
-          className={`absolute left-2.5 right-2.5 h-px bg-(--color-text) transition-transform duration-300 ${
+          className={`absolute left-2.5 right-2.5 h-px transition-transform duration-300 ${overlay ? "bg-white" : "bg-(--color-text)"} ${
             open ? "translate-y-0 -rotate-45" : "translate-y-1.5"
           }`}
         />
@@ -70,7 +71,7 @@ export function MobileMenu() {
       >
         <ul className="flex flex-col px-(--page-gutter) py-2">
           {navLinks.map((link) => {
-            const isActive = pathname === link.href;
+            const isActive = pathname === link.href || (link.href === "/services" && pathname.startsWith("/services/"));
             return (
               <li key={link.href} className="border-b border-(--color-border-dark)">
                 <Link
@@ -83,6 +84,17 @@ export function MobileMenu() {
                 >
                   {link.label}
                 </Link>
+                {link.href === "/services" && (
+                  <ul aria-label="Service pages" className="grid grid-cols-2 gap-x-3 gap-y-1 pb-4 sm:grid-cols-3">
+                    {services.map((service) => (
+                      <li key={service.id}>
+                        <Link href={`/services/${service.id}`} tabIndex={open ? 0 : -1} aria-current={pathname === `/services/${service.id}` ? "page" : undefined} className="block py-2 text-sm font-medium text-(--color-muted) hover:text-(--color-accent-text) aria-[current=page]:text-(--color-accent-text)">
+                          {service.name}
+                        </Link>
+                      </li>
+                    ))}
+                  </ul>
+                )}
               </li>
             );
           })}

@@ -48,7 +48,7 @@ export default async function ContactPage({ searchParams }: PageProps<"/contact"
       <section className="relative -mt-24 pb-20 sm:-mt-28 sm:pb-28">
         <Container>
           <div className="grid items-start gap-6 lg:grid-cols-[1.25fr_0.75fr] lg:gap-8">
-            <div className="rounded-3xl border border-(--color-border-dark) bg-(--color-surface) p-6 shadow-2xl shadow-black/20 sm:p-10">
+            <div className="rounded-3xl border border-(--color-border-dark) bg-(--color-surface) p-6 shadow-xl shadow-(--color-accent)/10 sm:p-10">
               <h2 className="mb-8 text-3xl text-(--color-text) sm:text-4xl">Send us an enquiry</h2>
               <ContactForm initialPurpose={initialPurpose} />
             </div>

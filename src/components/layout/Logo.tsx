@@ -5,9 +5,10 @@ import { siteSettings } from "@/config/site";
 
 interface LogoProps {
   size?: number;
+  overlay?: boolean;
 }
 
-export function Logo({ size = 32 }: LogoProps) {
+export function Logo({ size = 32, overlay = false }: LogoProps) {
   return (
     <Link
       href="/"
@@ -23,7 +24,7 @@ export function Logo({ size = 32 }: LogoProps) {
         style={{ width: size, height: size }}
         priority
       />
-      <span className="font-display text-xl text-(--color-text)">
+      <span className={`font-display text-xl ${overlay ? "text-white drop-shadow-md" : "text-(--color-text)"}`}>
         {siteSettings.brandName}
       </span>
     </Link>

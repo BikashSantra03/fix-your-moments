@@ -4,8 +4,6 @@ import { siteSettings } from "@/config/site";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 import { WhatsAppFloat } from "@/components/layout/WhatsAppFloat";
-import { ThemeScript } from "@/components/theme/ThemeScript";
-import { ThemeProvider } from "@/components/theme/ThemeProvider";
 import "./globals.css";
 
 const bodoniModa = Bodoni_Moda({
@@ -33,17 +31,13 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html
       lang="en"
-      suppressHydrationWarning
       className={`${bodoniModa.variable} ${outfit.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col">
-        <ThemeScript />
-        <ThemeProvider>
-          <Header />
-          <div className="flex-1 flex flex-col pt-[78px]">{children}</div>
-          <Footer />
-          <WhatsAppFloat />
-        </ThemeProvider>
+        <Header />
+        <div className="flex-1 flex flex-col pt-[78px]">{children}</div>
+        <Footer />
+        <WhatsAppFloat />
       </body>
     </html>
   );

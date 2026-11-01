@@ -1,5 +1,20 @@
 # Design System — Fix Your Moments
 
+## Current direction (2026-11-01)
+
+The client photography has arrived in `public/images/services/`. The site now uses a single white and red palette with no theme switch. These decisions supersede the provisional black and champagne proposal below; the remaining layout and accessibility guidance still applies where compatible.
+
+| Token | Value | Role |
+|---|---|---|
+| `--color-bg` | `#FFFFFF` | Main canvas |
+| `--color-surface` | `#FFF5F4` | Soft rose sections and cards |
+| `--color-accent` | `#B42332` | Buttons, dividers and focus |
+| `--color-accent-text` | `#A51F2D` | Red labels and links on white |
+| `--color-text` | `#241B1D` | Primary copy |
+| `--color-muted` | `#665D60` | Secondary copy |
+
+The service pages and galleries will be developed separately, using the delivered images.
+
 **Status:** Provisional visual proposal, NOT yet client approved. The client expressly rejected a green-heavy look.
 
 ## 1. Creative direction

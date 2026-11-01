@@ -44,7 +44,7 @@
 ## 5. Design and styling guardrails
 
 - A midnight-teal/green palette (e.g. `#0E2B2F`) is **rejected**. Do not reintroduce it as dominant surface, background or overlay.
-- **Provisional** palette: cinematic charcoal/black + champagne accents and ivory text, defined in `Design.md`.
+- Current palette: white, soft rose and crimson, defined in the current direction at the top of `Design.md`. There is no dark mode or theme toggle.
 - Use semantic tokens (`--background`, `--surface`, `--accent`, `--text`, `--muted`, etc.). Avoid scattering hex values throughout components.
 - Photography is the hero: avoid oversized decorative animations, busy backgrounds and excessive gradient effects.
 - Maintain visual hierarchy and readable overlays when actual images are delivered.
@@ -53,7 +53,7 @@
 
 ## 6. Images/video and ownership
 
-- Client has **not yet delivered real photos/videos**. Build using explicit placeholders in `public/images/placeholders/` and central media config.
+- Client photos are available in `public/images/services/`. Use them as the service pages are built; video has not been confirmed.
 - Never falsely label stand-in images as the studio's previous work in public production.
 - Don't pull photos from the two inspiration websites. Use media only with permission/license.
 - No broken `<img>`/`video` assets. Provide graceful fallback and reasonable dimensions.

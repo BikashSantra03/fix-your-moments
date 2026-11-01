@@ -6,8 +6,10 @@ export type ServiceCategory =
   | "corporate"
   | "editorial";
 
+export type ServiceId = ServiceCategory | "engagement" | "bridhi";
+
 export interface Service {
-  id: ServiceCategory;
+  id: ServiceId;
   name: string;
   tagline: string;
   description: string;
