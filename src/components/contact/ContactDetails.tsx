@@ -1,96 +1,31 @@
-import type { ReactNode } from "react";
 import { siteSettings } from "@/config/site";
-import { directionsUrl, getSocialLinks, telHref, whatsappChatLink } from "@/lib/contact";
-import { HeartIcon, MailIcon, PhoneIcon, PinIcon } from "@/components/ui/icons";
+import { directionsUrl, telHref, whatsappChatLink } from "@/lib/contact";
+import { ContactIcon, type ContactIconName } from "./ContactIcon";
 
-const pillClasses =
-  "inline-flex items-center gap-1.5 rounded-full border border-(--color-border-dark) px-4 py-2 text-sm font-medium text-(--color-text) transition-colors duration-200 hover:border-(--color-accent) hover:text-(--color-accent-text)";
+type ContactOption = { icon: ContactIconName; title: string; description: string; href: string | null | undefined };
 
-function DetailCard({ icon, label, children }: { icon: ReactNode; label: string; children: ReactNode }) {
-  return (
-    <div className="flex gap-4 rounded-2xl border border-(--color-border-dark) bg-(--color-surface) p-5 sm:p-6">
-      <span className="grid h-11 w-11 shrink-0 place-items-center rounded-full bg-(--color-accent)/15 text-(--color-accent-text)">
-        {icon}
-      </span>
-      <div className="min-w-0 flex-1">
-        <h3 className="font-body text-xs font-medium uppercase tracking-[0.14em] text-(--color-muted)">{label}</h3>
-        <div className="mt-1.5">{children}</div>
-      </div>
-    </div>
-  );
-}
-
-// Each detail renders only once configured in site.ts (Rules.md §7).
 export function ContactDetails() {
-  const { phone, email, address, mapQuery } = siteSettings;
-  const socialLinks = getSocialLinks();
+  const { phone, address, mapQuery, social, googleReviewUrl } = siteSettings;
+  const options: ContactOption[] = [
+    { icon: "phone", title: "Call us", description: "", href: phone ? telHref(phone) : null },
+    { icon: "whatsapp", title: "WhatsApp us", description: "Tell us about your plans.", href: whatsappChatLink },
+    { icon: "location", title: "Visit us", description: address ?? "", href: address ? directionsUrl(mapQuery ?? address) : null },
+    { icon: "facebook", title: "Facebook", description: "Stories from our latest shoots.", href: social.facebook },
+    { icon: "instagram", title: "Instagram", description: "Behind the scenes and moments we love.", href: social.instagram },
+    { icon: "review", title: "Google reviews", description: "Share your experience with us.", href: googleReviewUrl },
+  ];
 
   return (
-    <div className="flex flex-col gap-4">
-      {(phone || whatsappChatLink) && (
-        <DetailCard icon={<PhoneIcon />} label={whatsappChatLink ? "Call or WhatsApp" : "Call"}>
-          {phone && (
-            <a
-              href={telHref(phone)}
-              className="whitespace-nowrap font-display text-xl text-(--color-text) hover:text-(--color-accent-text) sm:text-2xl"
-            >
-              {phone}
-            </a>
-          )}
-          <div className="mt-4 flex flex-wrap gap-2">
-            {phone && (
-              <a href={telHref(phone)} className={pillClasses}>
-                Call now
-              </a>
-            )}
-            {whatsappChatLink && (
-              <a href={whatsappChatLink} target="_blank" rel="noopener noreferrer" className={pillClasses}>
-                Chat on WhatsApp
-              </a>
-            )}
+    <div className="grid grid-cols-2 gap-x-5 gap-y-5 sm:gap-x-10 sm:gap-y-6 lg:grid-cols-3 lg:gap-x-16">
+      {options.filter((option): option is ContactOption & { href: string } => Boolean(option.href)).map((option) => (
+        <a key={option.icon} href={option.href} target={option.icon === "phone" ? undefined : "_blank"} rel={option.icon === "phone" ? undefined : "noopener noreferrer"} className="group flex min-w-0 flex-col items-start transition-colors hover:text-(--color-accent-text)">
+          <span className="mb-1.5 block sm:mb-2 transition-transform duration-300 ease-out group-hover:-translate-y-1 group-focus-visible:-translate-y-1 motion-reduce:transform-none"><ContactIcon name={option.icon} /></span>
+          <h2 className="font-body text-base font-medium leading-tight tracking-tight sm:text-2xl">{option.title}</h2>
+          <div className="mt-1.5 w-full border-t border-(--color-border-dark) pt-1.5 sm:mt-2 sm:pt-2">
+            <p className="max-w-[34ch] break-words text-[13px] leading-[1.4] sm:text-base sm:leading-relaxed text-(--color-muted)">{option.icon === "phone" && phone ? <>Call us at <span className="whitespace-nowrap">{phone}</span></> : option.description}</p>
           </div>
-        </DetailCard>
-      )}
-
-      {address && (
-        <DetailCard icon={<PinIcon />} label="Visit the studio">
-          <address className="font-display text-lg not-italic leading-snug sm:text-xl text-(--color-text)">{address}</address>
-          <a
-            href={directionsUrl(mapQuery ?? address)}
-            target="_blank"
-            rel="noopener noreferrer"
-            className={`${pillClasses} mt-4`}
-          >
-            Get directions
-            <span aria-hidden="true">↗</span>
-          </a>
-        </DetailCard>
-      )}
-
-      {email && (
-        <DetailCard icon={<MailIcon />} label="Email">
-          {/* Sans is narrower than the display serif; <wbr> lets a long address wrap after "@" rather than mid-word. */}
-          <a
-            href={`mailto:${email}`}
-            className="break-words text-lg font-normal text-(--color-text) hover:text-(--color-accent-text) sm:text-xl"
-          >
-            {email.split("@")[0]}@<wbr />
-            {email.split("@")[1]}
-          </a>
-        </DetailCard>
-      )}
-
-      {socialLinks.length > 0 && (
-        <DetailCard icon={<HeartIcon />} label="Follow our work">
-          <div className="flex flex-wrap gap-2">
-            {socialLinks.map((link) => (
-              <a key={link.network} href={link.href} target="_blank" rel="noopener noreferrer" className={pillClasses}>
-                {link.label}
-              </a>
-            ))}
-          </div>
-        </DetailCard>
-      )}
+        </a>
+      ))}
     </div>
   );
 }

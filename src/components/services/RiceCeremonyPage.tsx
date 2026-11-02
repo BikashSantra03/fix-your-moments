@@ -15,7 +15,7 @@ const content: ServicePageContent = {
     description: "A first taste, a curious little smile, a family gathered close. Photographs of your baby’s rice ceremony and the love surrounding this new beginning.",
     primaryAction: "Enquire for your rice ceremony",
     galleryAction: "Discover the little moments",
-    titleClassName: "text-[clamp(2.8rem,4.4vw,4.8rem)] leading-[1.04] tracking-[-0.035em]",
+    titleClassName: "text-[clamp(2.35rem,9vw,2.65rem)] sm:text-[clamp(2.8rem,4.4vw,4.8rem)] leading-[1.04] tracking-[-0.035em]",
     contentClassName: "max-w-[580px]",
     descriptionClassName: "max-w-[38ch]",
     containerClassName: "justify-end py-24",

@@ -9,7 +9,7 @@ import { NavLinks } from "@/components/layout/NavLinks";
 import { Logo } from "@/components/layout/Logo";
 import { services } from "@/data/services";
 
-const serviceHeroPaths = new Set(services.map((service) => `/services/${service.id}`));
+const photoHeroPaths = new Set(["/contact", ...services.map((service) => `/services/${service.id}`)]);
 
 export function Header() {
   const pathname = usePathname();
@@ -22,7 +22,7 @@ export function Header() {
     return () => window.removeEventListener("scroll", update);
   }, [pathname]);
 
-  const overlayPhotoHero = serviceHeroPaths.has(pathname) && atTop;
+  const overlayPhotoHero = photoHeroPaths.has(pathname) && atTop;
 
   return (
     <header className="fixed inset-x-0 top-0 z-50">
@@ -38,7 +38,7 @@ export function Header() {
 
           <div className="flex items-center gap-2">
             <div className="hidden md:block">
-              <Button href="/contact">Book a shoot</Button>
+              <Button href="/contact#enquiry">Book a shoot</Button>
             </div>
             <MobileMenu overlay={overlayPhotoHero} />
           </div>

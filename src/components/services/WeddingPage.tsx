@@ -13,7 +13,7 @@ const content: ServicePageContent = {
     description: "The rituals, the rush, the quiet glances between it all. A wedding is made of moments both grand and small.",
     primaryAction: "Enquire for your wedding",
     galleryAction: "Explore the celebrations",
-    titleClassName: "max-w-[9ch] text-[clamp(3.5rem,6vw,6rem)] leading-[0.98] tracking-[-0.035em]",
+    titleClassName: "max-w-[9ch] text-[clamp(2.5rem,10vw,3rem)] sm:text-[clamp(3.5rem,6vw,6rem)] leading-[0.98] tracking-[-0.035em]",
     contentClassName: "max-w-[520px]",
     descriptionClassName: "max-w-[38ch]",
     containerClassName: "py-20",

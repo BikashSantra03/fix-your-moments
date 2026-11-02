@@ -15,7 +15,7 @@ const content: ServicePageContent = {
     description: "The familiar rituals, the red and white, the laughter before the celebrations begin. Photographs of your Bridhi day, with room for every little feeling.",
     primaryAction: "Enquire for your Bridhi",
     galleryAction: "Step into the celebration",
-    titleClassName: "text-[clamp(2.8rem,4.4vw,4.8rem)] leading-[1.04] tracking-[-0.035em]",
+    titleClassName: "text-[clamp(2.35rem,9vw,2.65rem)] sm:text-[clamp(2.8rem,4.4vw,4.8rem)] leading-[1.04] tracking-[-0.035em]",
     contentClassName: "max-w-[580px]",
     descriptionClassName: "max-w-[38ch]",
     containerClassName: "justify-end py-24",

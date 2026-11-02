@@ -15,7 +15,7 @@ const content: ServicePageContent = {
     description: "The exchanged rings, the familiar faces, the smile you keep finding across the room. We photograph the joy of your engagement, just as it unfolds.",
     primaryAction: "Enquire for your engagement",
     galleryAction: "Explore the moments",
-    titleClassName: "text-[clamp(2.8rem,4.7vw,5rem)] leading-[1.04] tracking-[-0.035em]",
+    titleClassName: "text-[clamp(2.35rem,9vw,2.65rem)] sm:text-[clamp(2.8rem,4.7vw,5rem)] leading-[1.04] tracking-[-0.035em]",
     contentClassName: "max-w-[620px]",
     descriptionClassName: "max-w-[38ch]",
     containerClassName: "py-24",

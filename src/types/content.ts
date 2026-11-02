@@ -54,6 +54,7 @@ export interface SiteSettings {
   address: string | null;
   mapQuery: string | null;
   mapEmbedUrl: string | null;
+  googleReviewUrl?: string;
   social: SocialLinks;
   siteUrl: string | null;
 }

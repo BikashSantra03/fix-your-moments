@@ -13,7 +13,7 @@ const content: ServicePageContent = {
     description: "An afternoon that feels like yours. A place you love. The little ways you find each other, captured before the celebrations begin.",
     primaryAction: "Plan your pre-wedding shoot",
     galleryAction: "Discover the moments",
-    titleClassName: "text-[clamp(3rem,4.5vw,5rem)] leading-[0.98] tracking-[-0.035em]",
+    titleClassName: "text-[clamp(2.4rem,9vw,2.75rem)] sm:text-[clamp(3rem,4.5vw,5rem)] leading-[0.98] tracking-[-0.035em]",
     titleLeadClassName: "block sm:whitespace-nowrap",
     emphasisClassName: "block",
     contentClassName: "max-w-[680px]",

@@ -23,4 +23,6 @@ export const siteSettings: SiteSettings = {
     youtube: "https://www.youtube.com",
   },
   siteUrl: null,
+  // Preview link only; replace with the client's Google Business review URL before launch.
+  googleReviewUrl: "https://www.google.com/maps",
 };

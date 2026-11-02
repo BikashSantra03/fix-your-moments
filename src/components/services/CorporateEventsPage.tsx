@@ -15,7 +15,7 @@ const content: ServicePageContent = {
     description: "The stage, the conversations, the people behind the occasion. Event photography that captures the atmosphere and gives your team a story to share.",
     primaryAction: "Discuss your event",
     galleryAction: "See the event highlights",
-    titleClassName: "text-[clamp(2.8rem,4.4vw,4.8rem)] leading-[1.04] tracking-[-0.035em]",
+    titleClassName: "text-[clamp(2.35rem,9vw,2.65rem)] sm:text-[clamp(2.8rem,4.4vw,4.8rem)] leading-[1.04] tracking-[-0.035em]",
     contentClassName: "max-w-[620px]",
     descriptionClassName: "max-w-[40ch]",
     containerClassName: "py-24",

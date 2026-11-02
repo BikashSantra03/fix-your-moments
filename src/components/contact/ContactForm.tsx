@@ -9,12 +9,12 @@ import type { EnquiryInput } from "@/types/content";
 const purposeOptions = [...services.map((service) => service.name), "Something else"];
 
 // Field order drives which invalid field receives focus first.
-const fieldOrder: (keyof EnquiryInput)[] = ["name", "mobile", "location", "purposes", "date", "message"];
+const fieldOrder: (keyof EnquiryInput)[] = ["name", "mobile", "purposes", "location", "date", "message"];
 
 const emptyValues: EnquiryInput = { name: "", mobile: "", location: "", purposes: [], date: "", message: "" };
 
 const controlClasses =
-  "w-full rounded-xl border border-(--color-border-dark) bg-(--color-bg) px-4 py-3.5 text-base text-(--color-text) placeholder:text-(--color-muted)/60 transition-[border-color,box-shadow] duration-200 focus:border-(--color-accent) focus:outline-none focus:ring-4 focus:ring-(--color-accent)/15 aria-invalid:border-(--color-error) aria-invalid:focus:ring-(--color-error)/15";
+  "w-full rounded-xl border border-(--color-border-dark) bg-(--color-bg) min-h-11 px-4 py-2.5 text-base text-(--color-text) placeholder:text-(--color-muted)/60 transition-[border-color,box-shadow] duration-200 focus:border-(--color-accent) focus:outline-none focus:ring-4 focus:ring-(--color-accent)/15 aria-invalid:border-(--color-error) aria-invalid:focus:ring-(--color-error)/15";
 
 interface FieldProps {
   id: string;
@@ -27,10 +27,10 @@ interface FieldProps {
 
 function Field({ id, label, error, optional, className = "", children }: FieldProps) {
   return (
-    <div className={`flex flex-col gap-2 ${className}`}>
+    <div className={`flex flex-col gap-1.5 sm:gap-2 ${className}`}>
       <label htmlFor={id} className="text-sm font-medium text-(--color-text)">
         {label}
-        {optional && <span className="ml-1.5 font-normal text-(--color-muted)">(optional)</span>}
+        {optional && <span className="ml-1 whitespace-nowrap text-xs font-normal text-(--color-muted)">(optional)</span>}
       </label>
       {children}
       <ErrorText id={`${id}-error`} error={error} />
@@ -39,6 +39,7 @@ function Field({ id, label, error, optional, className = "", children }: FieldPr
 }
 
 function ErrorText({ id, error }: { id: string; error?: string }) {
+  if (!error) return null;
   return (
     <p id={id} className="text-xs text-(--color-error)" aria-live="polite">
       {error}
@@ -130,7 +131,7 @@ export function ContactForm({ initialPurpose = "" }: ContactFormProps) {
   const submitting = status === "submitting";
 
   return (
-    <form ref={formRef} onSubmit={handleSubmit} noValidate aria-busy={submitting} className="grid gap-x-5 gap-y-4 sm:grid-cols-2">
+    <form ref={formRef} onSubmit={handleSubmit} noValidate aria-busy={submitting} className="grid gap-x-5 gap-y-3 sm:grid-cols-2 sm:gap-y-4">
       <Field id="f-name" label="Your name" error={errors.name}>
         <input
           id="f-name"
@@ -164,15 +165,15 @@ export function ContactForm({ initialPurpose = "" }: ContactFormProps) {
       </Field>
 
       <fieldset className="sm:col-span-2 flex flex-col gap-2.5" aria-describedby={describedBy("purposes")}>
-        <legend className="mb-2.5 text-sm font-medium text-(--color-text)">
+        <legend className="mb-2 text-sm font-medium text-(--color-text)">
           What would you like photographed?
-          <span className="ml-1.5 font-normal text-(--color-muted)">Choose all that apply</span>
+          <span className="mt-1 block text-xs font-normal text-(--color-muted)">Choose all that apply</span>
         </legend>
         <div className="flex flex-wrap gap-2">
           {purposeOptions.map((option) => (
             <label
               key={option}
-              className="group inline-flex cursor-pointer items-center gap-1.5 rounded-full border border-(--color-border-dark) px-4 py-2 text-sm text-(--color-muted) transition-colors duration-200 hover:border-(--color-accent) hover:text-(--color-text) has-checked:border-(--color-accent) has-checked:bg-(--color-accent) has-checked:font-medium has-checked:text-(--color-accent-contrast) has-focus-visible:ring-4 has-focus-visible:ring-(--color-accent)/25"
+              className="group inline-flex min-h-11 cursor-pointer items-center gap-1.5 rounded-full border border-(--color-border-dark) px-4 py-2 text-sm text-(--color-muted) transition-colors duration-200 hover:border-(--color-accent) hover:text-(--color-text) has-checked:border-(--color-accent) has-checked:bg-(--color-accent) has-checked:font-medium has-checked:text-(--color-accent-contrast) has-focus-visible:ring-4 has-focus-visible:ring-(--color-accent)/25"
             >
               <input
                 type="checkbox"
@@ -226,18 +227,18 @@ export function ContactForm({ initialPurpose = "" }: ContactFormProps) {
         <textarea
           id="f-message"
           name="message"
-          rows={4}
+          rows={3}
           maxLength={1000}
           placeholder="Venue, number of guests, rituals you'd like covered…"
           value={values.message}
           onChange={update}
           aria-invalid={Boolean(errors.message)}
           aria-describedby={describedBy("message")}
-          className={`${controlClasses} min-h-28 resize-y`}
+          className={`${controlClasses} min-h-24 resize-y`}
         />
       </Field>
 
-      <div className="sm:col-span-2 mt-1 flex flex-col-reverse gap-4 sm:flex-row sm:items-center sm:justify-between">
+      <div className="sm:col-span-2 flex flex-col-reverse gap-3 sm:flex-row sm:items-center sm:justify-between">
         <p className="max-w-[40ch] text-xs text-(--color-muted)">
           {status === "failed" ? (
             <span role="alert" className="text-(--color-error)">
@@ -250,7 +251,7 @@ export function ContactForm({ initialPurpose = "" }: ContactFormProps) {
         <button
           type="submit"
           disabled={submitting}
-          className="group inline-flex min-h-12 w-full items-center justify-center gap-2.5 rounded-full bg-(--color-cta) px-8 py-3.5 text-sm font-medium text-(--color-cta-contrast) shadow-lg shadow-(--color-accent)/20 transition-[filter,transform] duration-200 hover:-translate-y-0.5 hover:brightness-110 disabled:translate-y-0 disabled:cursor-wait disabled:opacity-80 sm:w-auto"
+          className="group inline-flex min-h-12 w-full cursor-pointer items-center justify-center gap-2.5 rounded-full bg-(--color-cta) px-8 py-3.5 text-sm font-medium text-(--color-cta-contrast) shadow-lg shadow-(--color-accent)/20 transition-[filter,transform] duration-200 hover:-translate-y-0.5 hover:brightness-110 disabled:translate-y-0 disabled:cursor-wait disabled:opacity-80 sm:w-auto"
         >
           {submitting ? (
             <>

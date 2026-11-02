@@ -20,7 +20,7 @@ export default function Home() {
               From quiet rituals to grand celebrations, we frame the moments you will want to return to.
             </p>
             <div className="mt-9 flex flex-wrap gap-4">
-              <Button href="/contact">Book your date</Button>
+              <Button href="/contact#enquiry">Book your date</Button>
               <Button href="/portfolio" variant="secondary">See our work</Button>
             </div>
           </div>

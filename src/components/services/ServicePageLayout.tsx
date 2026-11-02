@@ -14,16 +14,16 @@ export function ServicePageLayout({ content }: { content: ServicePageContent }) 
         <div aria-hidden="true" className={`absolute inset-0 -z-10 ${hero.overlayClassName}`} />
         <Container className={`flex min-h-[690px] items-start sm:min-h-[720px] sm:items-center lg:min-h-[min(900px,100svh)] ${hero.containerClassName}`}>
           <div className={`text-white ${hero.contentClassName}`}>
-            <p className="mb-5 flex items-center gap-3 text-sm font-medium uppercase tracking-[0.18em] text-white/90">
+            <p className="mb-4 flex items-center gap-3 text-xs sm:mb-5 sm:text-sm font-medium uppercase tracking-[0.18em] text-white/90">
               <span aria-hidden="true" className="h-px w-8 bg-white/80" /> {hero.eyebrow}
             </p>
             <h1 className={hero.titleClassName}>
               <span className={hero.titleLeadClassName}>{hero.title}</span>{" "}
               <em className={`font-normal text-[#ffd9dc] ${hero.emphasisClassName ?? ""}`}>{hero.emphasis}</em>
             </h1>
-            <p className={`mt-7 text-base leading-relaxed text-white/90 sm:text-lg ${hero.descriptionClassName}`}>{hero.description}</p>
-            <div className="mt-9 flex flex-wrap gap-3">
-              <Button href={`/contact?service=${slug}`}>{hero.primaryAction}</Button>
+            <p className={`mt-5 text-[15px] leading-relaxed sm:mt-7 text-white/90 sm:text-lg ${hero.descriptionClassName}`}>{hero.description}</p>
+            <div className="mt-6 flex flex-wrap gap-3 sm:mt-9">
+              <Button href={`/contact?service=${slug}#enquiry`}>{hero.primaryAction}</Button>
               <a href={`#${gallery.id}`} className="inline-flex min-h-11 items-center px-3 text-sm font-medium text-white underline-offset-4 hover:underline">{hero.galleryAction} ↓</a>
             </div>
           </div>
@@ -61,7 +61,7 @@ export function ServicePageLayout({ content }: { content: ServicePageContent }) 
             <p className="mb-4 text-sm font-medium uppercase tracking-[0.16em] text-(--color-accent-text)">{closing.eyebrow}</p>
             <h2 className={`${closing.titleClassName} ${closing.photos ? "" : "mx-auto"}`}>{closing.title}</h2>
             <p className={`mt-6 max-w-[46ch] text-base leading-relaxed text-(--color-muted) sm:text-lg ${closing.photos ? "" : "mx-auto"}`}>{closing.description}</p>
-            <div className="mt-8"><Button href={`/contact?service=${slug}`}>{closing.action}</Button></div>
+            <div className="mt-8"><Button href={`/contact?service=${slug}#enquiry`}>{closing.action}</Button></div>
           </div>
         </Container>
       </section>
