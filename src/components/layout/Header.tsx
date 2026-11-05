@@ -9,7 +9,7 @@ import { NavLinks } from "@/components/layout/NavLinks";
 import { Logo } from "@/components/layout/Logo";
 import { services } from "@/data/services";
 
-const photoHeroPaths = new Set(["/", "/contact", ...services.map((service) => `/services/${service.id}`)]);
+const photoHeroPaths = new Set(["/", "/about", "/contact", ...services.map((service) => `/services/${service.id}`)]);
 
 export function Header() {
   const pathname = usePathname();

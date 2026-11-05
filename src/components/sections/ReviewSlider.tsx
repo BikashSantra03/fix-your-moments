@@ -2,7 +2,7 @@
 
 import { useEffect, useRef, useState } from "react";
 import type { FocusEvent } from "react";
-import { ReviewCard } from "@/components/home/ReviewCard";
+import { ReviewCard } from "@/components/sections/ReviewCard";
 import { ChevronLeftIcon, ChevronRightIcon } from "@/components/ui/icons";
 import type { ClientReview } from "@/types/content";
 

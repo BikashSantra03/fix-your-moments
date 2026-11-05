@@ -1,5 +1,5 @@
-import { ReviewSlider } from "@/components/home/ReviewSlider";
-import { SectionHeading } from "@/components/home/SectionHeading";
+import { ReviewSlider } from "@/components/sections/ReviewSlider";
+import { SectionHeading } from "@/components/ui/SectionHeading";
 import { Container } from "@/components/ui/Container";
 import { clientReviews } from "@/data/reviews";
 

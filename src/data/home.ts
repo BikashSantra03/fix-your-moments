@@ -89,10 +89,3 @@ export const processPhotos = [
     className: "right-[6%] bottom-0 aspect-[4/5] w-[46%] border-[6px] border-(--color-bg) sm:border-8 [&_img]:object-[center_78%]",
   },
 ];
-
-export const processSteps = [
-  { title: "Talk", description: "Tell us the date, the place and what matters most to you." },
-  { title: "Plan", description: "We shape the shoot around your day, your rituals and your people." },
-  { title: "Shoot", description: "We stay close to the moments and out of your way." },
-  { title: "Deliver", description: "Your finished photographs come back to you, ready to keep and share." },
-];

@@ -1,7 +1,8 @@
 import Image from "next/image";
-import { SectionHeading } from "@/components/home/SectionHeading";
+import { SectionHeading } from "@/components/ui/SectionHeading";
 import { Container } from "@/components/ui/Container";
-import { processPhotos, processSteps } from "@/data/home";
+import { processPhotos } from "@/data/home";
+import { processSteps } from "@/data/process";
 
 export function ProcessSteps() {
   return (
@@ -16,7 +17,7 @@ export function ProcessSteps() {
               <li key={step.title} className="reveal grid grid-cols-[3rem_1fr] gap-x-3 border-b border-(--color-border-dark) py-5 sm:grid-cols-[4.5rem_8rem_1fr] sm:items-baseline sm:py-6">
                 <span aria-hidden="true" className="row-span-2 font-display text-3xl text-(--color-accent-text) sm:row-span-1 sm:text-4xl">{index + 1}</span>
                 <h3 className="text-2xl sm:text-[1.75rem]">{step.title}</h3>
-                <p className="mt-1 text-[15px] leading-relaxed text-(--color-muted) sm:mt-0 sm:text-base">{step.description}</p>
+                <p className="mt-1 text-[15px] leading-relaxed text-(--color-muted) sm:mt-0 sm:text-base">{step.summary}</p>
               </li>
             ))}
           </ol>

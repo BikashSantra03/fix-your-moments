@@ -14,12 +14,18 @@ Within one scroll, a visitor should feel the quality of the work, see that their
 | 2 | Studio introduction | `StudioIntro` | White | Who we are and how we work |
 | 3 | Services mosaic | `ServiceMosaic` | Rose | "Do they shoot my occasion?" |
 | 4 | Selected work | `SelectedWork`, `WorkStrip` | Dark | Proof of quality and range |
-| 5 | Photo pause | `PhotoPause` | Photo | Breathing space and an emotional beat |
+| 5 | Photo pause | `PhotoQuote` | Photo | Breathing space and an emotional beat |
 | 6 | How it works | `ProcessSteps` | White | Removes uncertainty about booking |
 | 7 | Client reviews | `ClientReviews`, `ReviewSlider`, `ReviewCard` | Rose | Trust just before the booking prompt |
 | 8 | Enquiry band | `EnquiryBand` | Crimson | The final conversion point |
 
-Shared: `SectionHeading` renders the eyebrow and heading for sections 2, 3, 4, 6 and 7. Content lives in `src/data/home.ts`, `portfolio.ts`, `reviews.ts` and `src/config/media.ts`.
+Shared with the About page: `ClientReviews`, `ReviewSlider`, `ReviewCard`, `EnquiryBand` and `PhotoQuote` in `src/components/sections/`, and `SectionHeading` in `src/components/ui/`. Content lives in `src/data/home.ts`, `portfolio.ts`, `reviews.ts`, `process.ts` and `src/config/media.ts`.
+
+## About page
+
+Sections: `AboutHero`, `FounderStory`, `AboutValues`, a `PhotoQuote` of the Durga Puja idol, `AboutProcess` (a timeline of the same four steps as the home page, with more detail from `src/data/process.ts`), then the shared reviews and enquiry band. Its photos are not used on the home page.
+
+**Placeholders to replace before launch:** the founder portrait (`media.founder` in `src/config/media.ts`) and the founder story in `src/data/about.ts`. Add no dates, numbers or achievements until the client confirms them.
 
 ## Decisions
 

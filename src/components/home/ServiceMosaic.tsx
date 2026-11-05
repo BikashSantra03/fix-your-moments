@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import { SectionHeading } from "@/components/home/SectionHeading";
+import { SectionHeading } from "@/components/ui/SectionHeading";
 import { Container } from "@/components/ui/Container";
 import { homeServiceTiles } from "@/data/home";
 import { services } from "@/data/services";

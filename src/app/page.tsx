@@ -1,12 +1,12 @@
 import type { Metadata } from "next";
-import { ClientReviews } from "@/components/home/ClientReviews";
-import { EnquiryBand } from "@/components/home/EnquiryBand";
 import { HomeHero } from "@/components/home/HomeHero";
-import { PhotoPause } from "@/components/home/PhotoPause";
 import { ProcessSteps } from "@/components/home/ProcessSteps";
 import { SelectedWork } from "@/components/home/SelectedWork";
 import { ServiceMosaic } from "@/components/home/ServiceMosaic";
 import { StudioIntro } from "@/components/home/StudioIntro";
+import { ClientReviews } from "@/components/sections/ClientReviews";
+import { EnquiryBand } from "@/components/sections/EnquiryBand";
+import { PhotoQuote } from "@/components/sections/PhotoQuote";
 
 export const metadata: Metadata = {
   description:
@@ -20,7 +20,13 @@ export default function Home() {
       <StudioIntro />
       <ServiceMosaic />
       <SelectedWork />
-      <PhotoPause />
+      <PhotoQuote
+        image="/images/services/prewedding/couple-hands-by-sea.webp"
+        alt="A couple holding hands across the frame, with the sea behind them"
+        label="A moment by the sea"
+      >
+        The smallest moments are the ones you <em>keep coming back to.</em>
+      </PhotoQuote>
       <ProcessSteps />
       <ClientReviews />
       <EnquiryBand />
