@@ -24,7 +24,7 @@ export const metadata: Metadata = {
     template: `%s — ${siteSettings.brandName}`,
   },
   description:
-    "Fix Your Moments — wedding, pre-wedding, haldi, rice ceremony, corporate event and editorial portrait photography.",
+    "Fix Your Moments — wedding, pre-wedding, engagement, Bridhi, rice ceremony and corporate event photography.",
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {

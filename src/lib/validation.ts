@@ -5,7 +5,7 @@ export type EnquiryErrors = Partial<Record<keyof EnquiryInput, string>>;
 // Indian mobile: optional +91/91 prefix, then 10 digits starting 6–9.
 const MOBILE_PATTERN = /^(\+?91)?[6-9]\d{9}$/;
 
-export function normalizeMobile(value: string): string {
+function normalizeMobile(value: string): string {
   return value.replace(/[\s()-]/g, "");
 }
 

@@ -1,13 +1,17 @@
 import Link from "next/link";
 import type { AnchorHTMLAttributes, ButtonHTMLAttributes } from "react";
 
-type Variant = "primary" | "secondary";
+type Variant = "primary" | "secondary" | "inverse" | "outline-light";
 
 const variantClasses: Record<Variant, string> = {
   primary:
     "bg-(--color-cta) text-(--color-cta-contrast) hover:brightness-110",
   secondary:
     "border border-(--color-border-dark) text-(--color-text) hover:border-(--color-accent) hover:text-(--color-accent-text)",
+  inverse:
+    "bg-(--color-white) text-(--color-accent-text) hover:bg-(--color-surface)",
+  "outline-light":
+    "border border-white/70 text-white hover:bg-white/10",
 };
 
 const baseClasses =

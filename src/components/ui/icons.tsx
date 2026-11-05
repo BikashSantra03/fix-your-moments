@@ -38,19 +38,26 @@ export function MailIcon(props: IconProps) {
   );
 }
 
-export function PinIcon(props: IconProps) {
+export function ChevronLeftIcon(props: IconProps) {
   return (
     <OutlineIcon {...props}>
-      <path d="M12 21s-7-6.2-7-11.5a7 7 0 0 1 14 0C19 14.8 12 21 12 21z" />
-      <circle cx="12" cy="9.5" r="2.5" />
+      <path d="M15 5l-7 7 7 7" />
     </OutlineIcon>
   );
 }
 
-export function HeartIcon(props: IconProps) {
+export function ChevronRightIcon(props: IconProps) {
   return (
     <OutlineIcon {...props}>
-      <path d="M12 20s-7-4.4-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 10c0 5.6-7 10-7 10z" />
+      <path d="M9 5l7 7-7 7" />
     </OutlineIcon>
+  );
+}
+
+export function QuoteIcon({ className = "h-5 w-5" }: IconProps) {
+  return (
+    <svg viewBox="0 0 24 24" className={`fill-current ${className}`} aria-hidden="true">
+      <path d="M10 6C6.7 7.2 4 10 4 14v4h6v-6H7.2c.3-1.9 1.5-3.2 3.3-3.9zM20 6c-3.3 1.2-6 4-6 8v4h6v-6h-2.8c.3-1.9 1.5-3.2 3.3-3.9z" />
+    </svg>
   );
 }

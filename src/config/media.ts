@@ -5,11 +5,7 @@ export const media = {
     height: 160,
   },
   hero: {
-    image: "/images/hero/hero-placeholder.jpg",
-    video: null as string | null,
-    poster: "/images/hero/hero-placeholder.jpg",
-  },
-  founder: {
-    image: "/images/team/founder-placeholder.jpg",
+    image: "/images/services/wedding/bride-in-red-veil-profile.webp",
+    alt: "Bride in profile wearing a red sari and veil, photographed against a dark background",
   },
 };

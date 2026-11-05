@@ -1,32 +1,36 @@
-export type ServiceCategory =
+export type ServiceId =
   | "wedding"
   | "prewedding"
-  | "haldi"
+  | "engagement"
+  | "bridhi"
   | "rice"
-  | "corporate"
-  | "editorial";
-
-export type ServiceId = ServiceCategory | "engagement" | "bridhi";
+  | "corporate";
 
 export interface Service {
   id: ServiceId;
   name: string;
-  tagline: string;
   description: string;
   image: string;
-  features: string[];
-  order: number;
 }
 
 export interface PortfolioItem {
   id: string;
   title: string;
-  category: ServiceCategory;
+  category: ServiceId;
   src: string;
   alt: string;
   aspectRatio?: `${number}/${number}`;
   featured?: boolean;
-  order: number;
+}
+
+export interface ClientReview {
+  id: string;
+  quote: string;
+  name: string;
+  occasion: string;
+  image: string;
+  alt: string;
+  position: string;
 }
 
 export interface EnquiryInput {

@@ -16,10 +16,11 @@
   --color-white: #ffffff;
   --color-error: #a51f2d;
   --color-map-pin: #ea4335;
+  --color-hero-backdrop: #070302; /* matches the left edge of the home hero photo, so the two blend */
+  --color-on-dark-accent: #ffd9dc;
 
   --page-max: 1240px;
   --page-gutter: clamp(16px, 5vw, 72px);
-  --radius-card: 6px;
 
   --font-display: var(--font-bodoni-moda), Georgia, serif;
   --font-body: var(--font-outfit), system-ui, sans-serif;
@@ -121,6 +122,129 @@
   .service-gallery-photo:hover img,
   .service-gallery-photo:focus-visible img {
     transform: none;
+  }
+}
+
+.home-hero-photo {
+  animation: home-hero-settle 2400ms cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+@keyframes home-hero-settle {
+  from {
+    opacity: 0;
+    transform: scale(1.06);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes home-fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* Fades content in as it scrolls into view. Browsers without view timelines simply show it,
+   so nothing can stay hidden. An overflow: hidden ancestor would capture the timeline,
+   which is why home's main uses overflow-x-clip. */
+@supports (animation-timeline: view()) {
+  @media (prefers-reduced-motion: no-preference) {
+    .reveal {
+      animation: home-fade-up linear both;
+      animation-timeline: view();
+      animation-range: entry 0% entry 30%;
+    }
+  }
+}
+
+/* Client reviews. All slides share one grid cell, so the last wraps to the first with no rewind.
+   Phones and tablets swap instantly, at the client's request. Desktop cross-fades: a fade is safe for reduced
+   motion, so its timing overrides the global rule, and only the shift is removed. */
+.review-slide {
+  grid-area: 1 / 1;
+}
+
+.review-slide[aria-hidden="true"] {
+  opacity: 0;
+  visibility: hidden;
+}
+
+@media (min-width: 1024px) {
+  .review-slide {
+    transition-property: opacity, transform, visibility;
+    transition-duration: 800ms !important;
+    transition-timing-function: cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    .review-slide[aria-hidden="true"] {
+      transform: translateX(28px);
+    }
+  }
+}
+
+/* Selected work strip. Four identical sets, moved by exactly one set per loop, so the jump back is
+   invisible. The strip stays natively scrollable so touch swiping and keyboard focus keep working;
+   WorkStrip wraps that scrolling so the animation can never carry it past the last set. */
+.work-strip {
+  container-type: inline-size;
+  scrollbar-width: none;
+  overscroll-behavior-x: contain;
+}
+
+.work-strip::-webkit-scrollbar {
+  display: none;
+}
+
+.work-track {
+  --work-inset: max(var(--page-gutter), calc((100cqw - var(--page-max)) / 2 + var(--page-gutter)));
+  --work-duration: 52s;
+  /* Client decision: the strip always moves, so these two override the global reduced-motion rule. */
+  animation: work-loop linear paused;
+  animation-duration: var(--work-duration) !important;
+  animation-iteration-count: infinite !important;
+  will-change: transform;
+}
+
+@media (min-width: 640px) {
+  .work-track {
+    --work-duration: 82s;
+  }
+}
+
+@media (min-width: 1024px) {
+  .work-track {
+    --work-duration: 110s;
+  }
+}
+
+.work-track[data-running] {
+  animation-play-state: running;
+}
+
+.work-strip:focus-within .work-track {
+  animation-play-state: paused;
+}
+
+@media (hover: hover) {
+  .work-strip:hover .work-track {
+    animation-play-state: paused;
+  }
+}
+
+@keyframes work-loop {
+  from {
+    transform: translate3d(calc(var(--work-inset) - 25%), 0, 0);
+  }
+  to {
+    transform: translate3d(calc(var(--work-inset) - 50%), 0, 0);
   }
 }
 
